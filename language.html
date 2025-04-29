@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외국어 회화 능력 자가 진단</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="office-image">
+            <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- 지구본 아이콘 -->
+                <circle cx="400" cy="200" r="120" fill="#a5d6ff" stroke="#3498db" stroke-width="10"/>
+                
+                <!-- 대륙 형태 -->
+                <path d="M340,120 Q380,160 420,130 Q460,150 480,180 Q500,210 460,250 Q430,280 380,260 Q350,280 320,240 Q300,200 340,120" fill="#2ecc71"/>
+                <path d="M350,170 Q370,190 355,220 Q340,240 350,170" fill="#2ecc71"/>
+                
+                <!-- 다양한 언어 표현 -->
+                <text x="280" y="140" font-family="Arial" font-size="16" fill="#333">Hello</text>
+                <text x="460" y="150" font-family="Arial" font-size="16" fill="#333">你好</text>
+                <text x="320" y="210" font-family="Arial" font-size="16" fill="#333">Bonjour</text>
+                <text x="430" y="220" font-family="Arial" font-size="16" fill="#333">こんにちは</text>
+                <text x="380" y="290" font-family="Arial" font-size="16" fill="#333">Hola</text>
+                
+                <!-- 사람 아이콘들 -->
+                <circle cx="200" cy="200" r="30" fill="#f39c12"/>
+                <rect x="185" y="240" width="30" height="60" fill="#f39c12"/>
+                <line x1="215" y1="260" x2="240" y2="240" stroke="#f39c12" stroke-width="10"/>
+                <line x1="185" y1="260" x2="160" y2="240" stroke="#f39c12" stroke-width="10"/>
+                
+                <circle cx="600" cy="200" r="30" fill="#9b59b6"/>
+                <rect x="585" y="240" width="30" height="60" fill="#9b59b6"/>
+                <line x1="615" y1="260" x2="640" y2="240" stroke="#9b59b6" stroke-width="10"/>
+                <line x1="585" y1="260" x2="560" y2="240" stroke="#9b59b6" stroke-width="10"/>
+                
+                <!-- 말풍선 -->
+                <path d="M250,150 Q290,120 330,150 L330,190 Q290,220 250,190 Z" fill="white" stroke="#333" stroke-width="2"/>
+                <path d="M550,150 Q510,120 470,150 L470,190 Q510,220 550,190 Z" fill="white" stroke="#333" stroke-width="2"/>
+            </svg>
+        </div>
+        
+        <div id="survey" class="survey-container">
+            <h1>외국어 회화 능력 자가 진단</h1>
+            <div class="back-link"><a href="index.html">← 메인으로 돌아가기</a></div>
+            <div id="question-container"></div>
+            <div class="buttons">
+                <button id="prev-btn" disabled>이전</button>
+                <button id="next-btn">다음</button>
+                <button id="submit-btn" style="display: none;">제출</button>
+            </div>
+        </div>
+
+        <div id="result" class="result-container" style="display: none;">
+            <h1>결과</h1>
+            <div id="score-display"></div>
+            <div id="result-message"></div>
+            <div class="buttons">
+                <button id="restart-btn">다시 시작</button>
+                <button id="back-to-main-btn">메인으로</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 설문 질문 데이터
+        const questions = [
+            {
+                question: "영어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "중국어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "일본어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "스페인어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "인도네시아어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "아랍어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "독일어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "프랑스어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "러시아어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            },
+            {
+                question: "베트남어로 기본적인 의사소통을 할 수 있다.",
+                options: [
+                    { text: "유창하게 가능", score: 4 },
+                    { text: "일상 대화 가능", score: 3 },
+                    { text: "간단한 표현만 가능", score: 2 },
+                    { text: "거의 불가능", score: 1 }
+                ]
+            }
+        ];
+
+        // 결과 메시지 데이터
+        const resultMessages = [
+            {
+                minScore: 10,
+                maxScore: 20,
+                message: "초급 수준: 대부분의 외국어에 익숙하지 않은 수준입니다. 관심 있는 언어 1-2개부터 기초 표현을 익혀보세요."
+            },
+            {
+                minScore: 21,
+                maxScore: 30,
+                message: "중하급 수준: 몇 가지 언어로 기본적인 의사소통이 가능합니다. 더 다양한 상황에서 활용할 수 있도록 연습해보세요."
+            },
+            {
+                minScore: 31,
+                maxScore: 35,
+                message: "중상급 수준: 여러 언어로 의사소통이 가능한 수준입니다. 유창성을 높이고 전문적인 표현도 배워보세요."
+            },
+            {
+                minScore: 36,
+                maxScore: 40,
+                message: "고급 수준: 다양한 언어를 능숙하게 구사할 수 있는 뛰어난 언어 능력을 갖추고 있습니다. 문화적 이해와 함께 더 깊이 있는 의사소통을 시도해보세요."
+            }
+        ];
+
+        // 전역 변수
+        let currentQuestionIndex = 0;
+        let answers = [];
+
+        // DOM 요소
+        const questionContainer = document.getElementById('question-container');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const submitBtn = document.getElementById('submit-btn');
+        const surveyContainer = document.getElementById('survey');
+        const resultContainer = document.getElementById('result');
+        const scoreDisplay = document.getElementById('score-display');
+        const resultMessageElement = document.getElementById('result-message');
+        const restartBtn = document.getElementById('restart-btn');
+        const backToMainBtn = document.getElementById('back-to-main-btn');
+
+        // 초기화
+        function init() {
+            currentQuestionIndex = 0;
+            answers = new Array(questions.length).fill(null);
+            showQuestion(currentQuestionIndex);
+            surveyContainer.style.display = 'block';
+            resultContainer.style.display = 'none';
+        }
+
+        // 질문 표시
+        function showQuestion(index) {
+            const question = questions[index];
+            
+            let optionsHTML = '';
+            question.options.forEach((option, i) => {
+                const isSelected = answers[index] === i;
+                optionsHTML += `
+                    <div class="option ${isSelected ? 'selected' : ''}" data-index="${i}">
+                        ${option.text}
+                    </div>
+                `;
+            });
+
+            questionContainer.innerHTML = `
+                <div class="question">
+                    <div class="question-text">${index + 1}. ${question.question}</div>
+                    <div class="options">${optionsHTML}</div>
+                </div>
+            `;
+
+            // 옵션 클릭 이벤트 추가
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', () => {
+                    const optionIndex = parseInt(option.getAttribute('data-index'));
+                    answers[currentQuestionIndex] = optionIndex;
+                    document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+            });
+
+            // 버튼 상태 업데이트
+            updateButtonsState();
+        }
+
+        // 버튼 상태 업데이트
+        function updateButtonsState() {
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            const isLastQuestion = currentQuestionIndex === questions.length - 1;
+            nextBtn.style.display = isLastQuestion ? 'none' : 'block';
+            submitBtn.style.display = isLastQuestion ? 'block' : 'none';
+        }
+
+        // 이전 질문으로 이동
+        function goToPreviousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // 다음 질문으로 이동
+        function goToNextQuestion() {
+            if (currentQuestionIndex < questions.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+            }
+        }
+
+        // 점수 계산
+        function calculateScore() {
+            let totalScore = 0;
+            
+            answers.forEach((answerIndex, questionIndex) => {
+                if (answerIndex !== null) {
+                    totalScore += questions[questionIndex].options[answerIndex].score;
+                }
+            });
+            
+            return totalScore;
+        }
+
+        // 결과 메시지 가져오기
+        function getResultMessage(score) {
+            for (const result of resultMessages) {
+                if (score >= result.minScore && score <= result.maxScore) {
+                    return result.message;
+                }
+            }
+            return "결과를 분석할 수 없습니다.";
+        }
+
+        // 결과 표시
+        function showResult() {
+            const score = calculateScore();
+            const message = getResultMessage(score);
+            
+            scoreDisplay.textContent = `총점: ${score}점`;
+            resultMessageElement.textContent = message;
+            
+            surveyContainer.style.display = 'none';
+            resultContainer.style.display = 'block';
+        }
+
+        // 메인 페이지로 이동
+        function goToMainPage() {
+            window.location.href = 'index.html';
+        }
+
+        // 이벤트 리스너
+        prevBtn.addEventListener('click', goToPreviousQuestion);
+        nextBtn.addEventListener('click', goToNextQuestion);
+        submitBtn.addEventListener('click', showResult);
+        restartBtn.addEventListener('click', init);
+        backToMainBtn.addEventListener('click', goToMainPage);
+
+        // 페이지 로드 시 초기화
+        init();
+    </script>
+</body>
+</html> 

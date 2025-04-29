@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>외국어 회화 능력 자가 진단</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="office-image">
+            <svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                <!-- 지구본 아이콘 -->
+                <circle cx="400" cy="200" r="120" fill="#a5d6ff" stroke="#3498db" stroke-width="10"/>
+                
+                <!-- 대륙 형태 -->
+                <path d="M340,120 Q380,160 420,130 Q460,150 480,180 Q500,210 460,250 Q430,280 380,260 Q350,280 320,240 Q300,200 340,120" fill="#2ecc71"/>
+                <path d="M350,170 Q370,190 355,220 Q340,240 350,170" fill="#2ecc71"/>
+                
+                <!-- 다양한 언어 표현 -->
+                <text x="280" y="140" font-family="Arial" font-size="16" fill="#333">Hello</text>
+                <text x="460" y="150" font-family="Arial" font-size="16" fill="#333">你好</text>
+                <text x="320" y="210" font-family="Arial" font-size="16" fill="#333">Bonjour</text>
+                <text x="430" y="220" font-family="Arial" font-size="16" fill="#333">こんにちは</text>
+                <text x="380" y="290" font-family="Arial" font-size="16" fill="#333">Hola</text>
+                
+                <!-- 사람 아이콘들 -->
+                <circle cx="200" cy="200" r="30" fill="#f39c12"/>
+                <rect x="185" y="240" width="30" height="60" fill="#f39c12"/>
+                <line x1="215" y1="260" x2="240" y2="240" stroke="#f39c12" stroke-width="10"/>
+                <line x1="185" y1="260" x2="160" y2="240" stroke="#f39c12" stroke-width="10"/>
+                
+                <circle cx="600" cy="200" r="30" fill="#9b59b6"/>
+                <rect x="585" y="240" width="30" height="60" fill="#9b59b6"/>
+                <line x1="615" y1="260" x2="640" y2="240" stroke="#9b59b6" stroke-width="10"/>
+                <line x1="585" y1="260" x2="560" y2="240" stroke="#9b59b6" stroke-width="10"/>
+                
+                <!-- 말풍선 -->
+                <path d="M250,150 Q290,120 330,150 L330,190 Q290,220 250,190 Z" fill="white" stroke="#333" stroke-width="2"/>
+                <path d="M550,150 Q510,120 470,150 L470,190 Q510,220 550,190 Z" fill="white" stroke="#333" stroke-width="2"/>
+            </svg>
+        </div>
+        
+        <div id="survey" class="survey-container">
+            <h1>외국어 회화 능력 자가 진단</h1>
+            <div class="back-link"><a href="index.html">← 메인으로 돌아가기</a></div>
+            <div id="question-container"></div>
+            <div class="buttons">
+                <button id="prev-btn" disabled>이전</button>
+                <button id="next-btn">다음</button>
+                <button id="submit-btn" style="display: none;">제출</button>
+            </div>
+        </div>
+
+        <div id="result" class="result-container" style="display: none;">
+            <h1>결과</h1>
+            <div id="score-display"></div>
+            <div id="result-message"></div>
+            <div class="buttons">
+                <button id="restart-btn">다시 시작</button>
+                <button id="back-to-main-btn">메인으로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="language.js"></script>
+</body>
+</html> 

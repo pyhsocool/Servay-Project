@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>의사소통 능력 자가 진단</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="office-image">
+            <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- 배경 -->
+                <rect x="0" y="0" width="600" height="200" fill="#f5f8fa"/>
+                
+                <!-- 대화 거품 아이콘 -->
+                <ellipse cx="300" cy="90" rx="180" ry="70" fill="#ffffff" stroke="#3498db" stroke-width="3"/>
+                
+                <!-- 소통 아이콘 (사람들) -->
+                <circle cx="200" cy="90" r="30" fill="#f39c12"/>
+                <rect x="185" y="130" width="30" height="50" fill="#f39c12"/>
+                
+                <circle cx="400" cy="90" r="30" fill="#9b59b6"/>
+                <rect x="385" y="130" width="30" height="50" fill="#9b59b6"/>
+                
+                <!-- 화살표 (의사소통) -->
+                <path d="M240,90 L360,90" stroke="#333" stroke-width="5" stroke-dasharray="10,5"/>
+                <polygon points="355,85 370,90 355,95" fill="#333"/>
+                <polygon points="245,85 230,90 245,95" fill="#333"/>
+                
+                <!-- 말풍선 내부 텍스트 심볼 -->
+                <text x="260" y="70" font-family="Arial" font-size="14" fill="#333">소통</text>
+                <text x="315" y="105" font-family="Arial" font-size="14" fill="#333">대화</text>
+                
+                <!-- 소통 이미지 추가 표현 -->
+                <path d="M220,160 Q270,180 320,160" stroke="#333" stroke-width="2" fill="none"/>
+                <path d="M340,160 Q370,180 400,160" stroke="#333" stroke-width="2" fill="none"/>
+            </svg>
+        </div>
+        
+        <div id="survey" class="survey-container">
+            <h1>의사소통 능력 자가 진단</h1>
+            <div class="back-link"><a href="index.html">← 메인으로 돌아가기</a></div>
+            <div id="question-container"></div>
+            <div class="buttons">
+                <button id="prev-btn" disabled>이전</button>
+                <button id="next-btn">다음</button>
+                <button id="submit-btn" style="display: none;">제출</button>
+            </div>
+        </div>
+
+        <div id="result" class="result-container" style="display: none;">
+            <h1>결과</h1>
+            <div id="score-display"></div>
+            <div id="result-message"></div>
+            <div class="buttons">
+                <button id="restart-btn">다시 시작</button>
+                <button id="back-to-main-btn">메인으로</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="communication.js"></script>
+</body>
+</html> 

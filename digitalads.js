@@ -502,29 +502,52 @@ function getResultMessage(score) {
 function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
-    const category = "디지털 광고 능력";
-    
-    // 언어에 따른 점수 표시
     const lang = localStorage.getItem('selectedLanguage') || 'ko';
     
-    // 결론 도출 부분 - 개선된 구조
+    // 언어에 따른 타이틀과 카테고리 이름 설정
+    let categoryName, summaryTitle, strengthTitle, weaknessTitle, resourcesTitle, chartTitle;
+    
+    if (lang === 'ko') {
+        categoryName = "디지털 광고 능력";
+        summaryTitle = "1. 요약된 능력 진단";
+        strengthTitle = "2. 강점 분석";
+        weaknessTitle = "3. 보완이 필요한 분야 제시";
+        resourcesTitle = "4. 추천 학습 방향 / 자료";
+        chartTitle = "능력 진단 차트";
+    } else if (lang === 'en') {
+        categoryName = "Digital Advertising Skills";
+        summaryTitle = "1. Skills Assessment Summary";
+        strengthTitle = "2. Strengths Analysis";
+        weaknessTitle = "3. Areas for Improvement";
+        resourcesTitle = "4. Recommended Learning Resources";
+        chartTitle = "Skills Assessment Chart";
+    } else if (lang === 'es') {
+        categoryName = "Habilidades de Publicidad Digital";
+        summaryTitle = "1. Resumen de Evaluación de Habilidades";
+        strengthTitle = "2. Análisis de Fortalezas";
+        weaknessTitle = "3. Áreas de Mejora";
+        resourcesTitle = "4. Recursos de Aprendizaje Recomendados";
+        chartTitle = "Gráfico de Evaluación de Habilidades";
+    }
+    
+    // 결론 도출 부분 - 다국어 지원 구조
     let resultHTML = `
-        <h2>1. 요약된 능력 진단</h2>
-        <p>${category}: ${score} — ${getAbilityLevel(score)}</p>
+        <h2>${summaryTitle}</h2>
+        <p>${categoryName}: ${score} — ${getAbilityLevel(score, lang)}</p>
         
-        <h2>2. 강점 분석</h2>
-        <p>${getStrengthAnalysis(score)}</p>
+        <h2>${strengthTitle}</h2>
+        <p>${getStrengthAnalysis(score, lang)}</p>
         
-        <h2>3. 보완이 필요한 분야 제시</h2>
-        <p>${getWeaknessAnalysis(score)}</p>
+        <h2>${weaknessTitle}</h2>
+        <p>${getWeaknessAnalysis(score, lang)}</p>
         
-        <h2>4. 추천 학습 방향 / 자료</h2>
+        <h2>${resourcesTitle}</h2>
         <div class="recommended-resources">
-            ${getLearningResources(score)}
+            ${getLearningResources(score, lang)}
         </div>
         
         <div class="chart-container">
-            <h3>능력 진단 차트</h3>
+            <h3>${chartTitle}</h3>
             <div class="radar-chart">
                 <canvas id="abilityChart" width="300" height="300"></canvas>
             </div>
@@ -538,76 +561,196 @@ function showResult() {
     resultContainer.style.display = 'block';
     
     // 차트 생성
-    drawRadarChart(score);
+    drawRadarChart(score, lang);
 }
 
 // 능력 수준 반환
-function getAbilityLevel(score) {
-    if (score >= 36) {
-        return "디지털 광고를 전문적으로 운영할 수 있는 고급 수준입니다.";
-    } else if (score >= 31) {
-        return "효과적인 디지털 광고 캠페인을 운영할 수 있는 중급 수준입니다.";
-    } else if (score >= 21) {
-        return "기본적인 디지털 광고 운영이 가능한 기초 수준입니다.";
-    } else {
-        return "디지털 광고에 대한 기본 지식이 필요한 초보 수준입니다.";
+function getAbilityLevel(score, lang) {
+    if (lang === 'ko') {
+        if (score >= 36) {
+            return "디지털 광고를 전문적으로 운영할 수 있는 고급 수준입니다.";
+        } else if (score >= 31) {
+            return "효과적인 디지털 광고 캠페인을 운영할 수 있는 중급 수준입니다.";
+        } else if (score >= 21) {
+            return "기본적인 디지털 광고 운영이 가능한 기초 수준입니다.";
+        } else {
+            return "디지털 광고에 대한 기본 지식이 필요한 초보 수준입니다.";
+        }
+    } else if (lang === 'en') {
+        if (score >= 36) {
+            return "Advanced level with professional digital advertising management skills.";
+        } else if (score >= 31) {
+            return "Intermediate level capable of running effective digital advertising campaigns.";
+        } else if (score >= 21) {
+            return "Basic level with fundamental digital advertising operation skills.";
+        } else {
+            return "Beginner level needing basic knowledge of digital advertising.";
+        }
+    } else if (lang === 'es') {
+        if (score >= 36) {
+            return "Nivel avanzado con habilidades profesionales de gestión de publicidad digital.";
+        } else if (score >= 31) {
+            return "Nivel intermedio capaz de ejecutar campañas de publicidad digital efectivas.";
+        } else if (score >= 21) {
+            return "Nivel básico con habilidades fundamentales de operación de publicidad digital.";
+        } else {
+            return "Nivel principiante que necesita conocimientos básicos de publicidad digital.";
+        }
     }
 }
 
 // 강점 분석 반환
-function getStrengthAnalysis(score) {
-    if (score >= 36) {
-        return "당신은 여러 플랫폼에서 정교한 디지털 광고 캠페인을 기획하고 운영할 수 있습니다. 데이터 분석을 통한 인사이트 도출, 정밀한 타겟팅 전략 수립, 효율적인 예산 관리, A/B 테스트 등 전문적인 기술을 갖추고 있습니다.";
-    } else if (score >= 31) {
-        return "당신은 주요 디지털 광고 플랫폼에서 효과적인 캠페인을 운영할 수 있습니다. 타겟 설정, 키워드 선택, 광고 문구 작성, 성과 분석 등의 기술을 잘 활용하고 있습니다.";
-    } else if (score >= 21) {
-        return "당신은 기본적인 디지털 광고 캠페인을 설정하고 운영할 수 있습니다. 주요 광고 플랫폼의 인터페이스를 이해하고, 간단한 광고를 집행할 수 있는 능력을 갖추고 있습니다.";
-    } else {
-        return "당신은 디지털 광고의 기본 개념에 대한 이해가 있으며, 주요 플랫폼의 존재와 역할을 알고 있습니다. 간단한 광고 설정과 모니터링이 가능합니다.";
+function getStrengthAnalysis(score, lang) {
+    if (lang === 'ko') {
+        if (score >= 36) {
+            return "당신은 여러 플랫폼에서 정교한 디지털 광고 캠페인을 기획하고 운영할 수 있습니다. 데이터 분석을 통한 인사이트 도출, 정밀한 타겟팅 전략 수립, 효율적인 예산 관리, A/B 테스트 등 전문적인 기술을 갖추고 있습니다.";
+        } else if (score >= 31) {
+            return "당신은 주요 디지털 광고 플랫폼에서 효과적인 캠페인을 운영할 수 있습니다. 타겟 설정, 키워드 선택, 광고 문구 작성, 성과 분석 등의 기술을 잘 활용하고 있습니다.";
+        } else if (score >= 21) {
+            return "당신은 기본적인 디지털 광고 캠페인을 설정하고 운영할 수 있습니다. 주요 광고 플랫폼의 인터페이스를 이해하고, 간단한 광고를 집행할 수 있는 능력을 갖추고 있습니다.";
+        } else {
+            return "당신은 디지털 광고의 기본 개념에 대한 이해가 있으며, 주요 플랫폼의 존재와 역할을 알고 있습니다. 간단한 광고 설정과 모니터링이 가능합니다.";
+        }
+    } else if (lang === 'en') {
+        if (score >= 36) {
+            return "You can plan and manage sophisticated digital advertising campaigns across multiple platforms. You possess professional skills in data analysis for insights, precise targeting strategy development, efficient budget management, and A/B testing.";
+        } else if (score >= 31) {
+            return "You can effectively manage campaigns on major digital advertising platforms. You make good use of targeting setup, keyword selection, ad copy writing, and performance analysis skills.";
+        } else if (score >= 21) {
+            return "You can set up and operate basic digital advertising campaigns. You understand the interfaces of major advertising platforms and have the ability to run simple ads.";
+        } else {
+            return "You have a basic understanding of digital advertising concepts and know the existence and roles of major platforms. You can set up and monitor simple advertisements.";
+        }
+    } else if (lang === 'es') {
+        if (score >= 36) {
+            return "Puedes planificar y gestionar campañas sofisticadas de publicidad digital en múltiples plataformas. Posees habilidades profesionales en análisis de datos para obtener insights, desarrollo de estrategias precisas de segmentación, gestión eficiente de presupuesto y pruebas A/B.";
+        } else if (score >= 31) {
+            return "Puedes gestionar efectivamente campañas en las principales plataformas de publicidad digital. Haces buen uso de la configuración de segmentación, selección de palabras clave, redacción de anuncios y habilidades de análisis de rendimiento.";
+        } else if (score >= 21) {
+            return "Puedes configurar y operar campañas básicas de publicidad digital. Comprendes las interfaces de las principales plataformas publicitarias y tienes la capacidad de ejecutar anuncios simples.";
+        } else {
+            return "Tienes una comprensión básica de los principios básicos de publicidad digital y uso de plataformas principales. Necesitas aprender sobre las características de cada canal, métodos básicos de configuración de anuncios y métricas de medición de rendimiento.";
+        }
     }
 }
 
 // 약점 분석 반환
-function getWeaknessAnalysis(score) {
-    if (score >= 36) {
-        return "높은 수준의 광고 운영 능력을 갖추고 있지만, 새로운 광고 플랫폼과 기술 트렌드를 지속적으로 학습하고, 보다 정교한 자동화 및 AI 기반 최적화 기법을 익히면 더욱 전문성을 높일 수 있습니다.";
-    } else if (score >= 31) {
-        return "심층적인 데이터 분석 및 인사이트 도출 능력을 키울 필요가 있습니다. 또한 리마케팅, 전환 추적, A/B 테스트 등의 고급 기법을 더 효과적으로 활용하는 방법을 학습하면 좋겠습니다.";
-    } else if (score >= 21) {
-        return "다양한 광고 플랫폼과 포맷에 대한 경험이 부족합니다. 타겟팅 옵션을 더 정교하게 활용하고, 성과 분석 및 최적화 방법에 대한 학습이 필요합니다.";
-    } else {
-        return "디지털 광고의 기본 원리와 주요 플랫폼 사용법에 대한 이해가 부족합니다. 각 채널의 특성과 기본적인 광고 설정 방법, 성과 측정 지표에 대한 학습이 필요합니다.";
+function getWeaknessAnalysis(score, lang) {
+    if (lang === 'ko') {
+        if (score >= 36) {
+            return "높은 수준의 광고 운영 능력을 갖추고 있지만, 새로운 광고 플랫폼과 기술 트렌드를 지속적으로 학습하고, 보다 정교한 자동화 및 AI 기반 최적화 기법을 익히면 더욱 전문성을 높일 수 있습니다.";
+        } else if (score >= 31) {
+            return "심층적인 데이터 분석 및 인사이트 도출 능력을 키울 필요가 있습니다. 또한 리마케팅, 전환 추적, A/B 테스트 등의 고급 기법을 더 효과적으로 활용하는 방법을 학습하면 좋겠습니다.";
+        } else if (score >= 21) {
+            return "다양한 광고 플랫폼과 포맷에 대한 경험이 부족합니다. 타겟팅 옵션을 더 정교하게 활용하고, 성과 분석 및 최적화 방법에 대한 학습이 필요합니다.";
+        } else {
+            return "디지털 광고의 기본 원리와 주요 플랫폼 사용법에 대한 이해가 부족합니다. 각 채널의 특성과 기본적인 광고 설정 방법, 성과 측정 지표에 대한 학습이 필요합니다.";
+        }
+    } else if (lang === 'en') {
+        if (score >= 36) {
+            return "While you have a high level of advertising management ability, you can further enhance your expertise by continuously learning about new advertising platforms and technology trends, and mastering more sophisticated automation and AI-based optimization techniques.";
+        } else if (score >= 31) {
+            return "You need to develop deeper data analysis and insight derivation skills. It would also be beneficial to learn how to more effectively utilize advanced techniques such as remarketing, conversion tracking, and A/B testing.";
+        } else if (score >= 21) {
+            return "You lack experience with various advertising platforms and formats. You need to learn how to use targeting options more precisely and study performance analysis and optimization methods.";
+        } else {
+            return "You have limited understanding of basic digital advertising principles and major platform usage. You need to learn about the characteristics of each channel, basic ad setup methods, and performance measurement metrics.";
+        }
+    } else if (lang === 'es') {
+        if (score >= 36) {
+            return "Aunque tienes un alto nivel de capacidad de gestión publicitaria, puedes mejorar aún más tu experiencia aprendiendo continuamente sobre nuevas plataformas publicitarias y tendencias tecnológicas, y dominando técnicas más sofisticadas de automatización y optimización basadas en IA.";
+        } else if (score >= 31) {
+            return "Necesitas desarrollar habilidades más profundas de análisis de datos y derivación de insights. También sería beneficioso aprender a utilizar más efectivamente técnicas avanzadas como remarketing, seguimiento de conversiones y pruebas A/B.";
+        } else if (score >= 21) {
+            return "Te falta experiencia con varias plataformas y formatos publicitarios. Necesitas aprender a usar opciones de segmentación con más precisión y estudiar métodos de análisis y optimización de rendimiento.";
+        } else {
+            return "Tienes una comprensión limitada de los principios básicos de publicidad digital y uso de plataformas principales. Necesitas aprender sobre las características de cada canal, métodos básicos de configuración de anuncios y métricas de medición de rendimiento.";
+        }
     }
 }
 
 // 학습 자료 반환
-function getLearningResources(score) {
+function getLearningResources(score, lang) {
     let resources = '<ul>';
     
-    if (score >= 36) {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">고급 디지털 광고 최적화 전략</a></li>
-            <li>추천 키워드: '프로그래매틱 광고', '통합 마케팅 전략', 'AI 기반 광고 최적화'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 마케팅 데이터 분석 심화</a></li>
-        `;
-    } else if (score >= 31) {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">성과 중심 광고 캠페인 전략</a></li>
-            <li>추천 키워드: '전환 최적화', '데이터 기반 광고 분석', '고급 리타겟팅'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">퍼포먼스 마케팅 실전 전략</a></li>
-        `;
-    } else if (score >= 21) {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">디지털 광고 실전 가이드</a></li>
-            <li>추천 키워드: '효과적인 타겟팅', '광고 성과 분석', '크리에이티브 최적화'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 광고 중급 과정</a></li>
-        `;
-    } else {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">디지털 광고 기초 가이드</a></li>
-            <li>추천 키워드: '페이스북 광고 기초', '구글 광고 입문', '광고 성과 지표'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 광고 입문자를 위한 가이드</a></li>
-        `;
+    if (lang === 'ko') {
+        if (score >= 36) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">고급 디지털 광고 최적화 전략</a></li>
+                <li>추천 키워드: '프로그래매틱 광고', '통합 마케팅 전략', 'AI 기반 광고 최적화'</li>
+                <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 마케팅 데이터 분석 심화</a></li>
+            `;
+        } else if (score >= 31) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">성과 중심 광고 캠페인 전략</a></li>
+                <li>추천 키워드: '전환 최적화', '데이터 기반 광고 분석', '고급 리타겟팅'</li>
+                <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">퍼포먼스 마케팅 실전 전략</a></li>
+            `;
+        } else if (score >= 21) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">디지털 광고 실전 가이드</a></li>
+                <li>추천 키워드: '효과적인 타겟팅', '광고 성과 분석', '크리에이티브 최적화'</li>
+                <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 광고 중급 과정</a></li>
+            `;
+        } else {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">디지털 광고 기초 가이드</a></li>
+                <li>추천 키워드: '페이스북 광고 기초', '구글 광고 입문', '광고 성과 지표'</li>
+                <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 광고 입문자를 위한 가이드</a></li>
+            `;
+        }
+    } else if (lang === 'en') {
+        if (score >= 36) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Advanced Digital Advertising Optimization Strategies</a></li>
+                <li>Recommended keywords: 'Programmatic Advertising', 'Integrated Marketing Strategy', 'AI-based Ad Optimization'</li>
+                <li>Free YouTube courses: <a href="https://www.youtube.com" target="_blank">Advanced Digital Marketing Data Analysis</a></li>
+            `;
+        } else if (score >= 31) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Performance-Focused Advertising Campaign Strategies</a></li>
+                <li>Recommended keywords: 'Conversion Optimization', 'Data-Driven Ad Analysis', 'Advanced Retargeting'</li>
+                <li>Free YouTube courses: <a href="https://www.youtube.com" target="_blank">Performance Marketing Practical Strategies</a></li>
+            `;
+        } else if (score >= 21) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Digital Advertising Practical Guide</a></li>
+                <li>Recommended keywords: 'Effective Targeting', 'Ad Performance Analysis', 'Creative Optimization'</li>
+                <li>Free YouTube courses: <a href="https://www.youtube.com" target="_blank">Intermediate Digital Advertising Course</a></li>
+            `;
+        } else {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Digital Advertising Basics Guide</a></li>
+                <li>Recommended keywords: 'Facebook Ads Basics', 'Google Ads Introduction', 'Ad Performance Metrics'</li>
+                <li>Free YouTube courses: <a href="https://www.youtube.com" target="_blank">Guide for Digital Advertising Beginners</a></li>
+            `;
+        }
+    } else if (lang === 'es') {
+        if (score >= 36) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Estrategias Avanzadas de Optimización de Publicidad Digital</a></li>
+                <li>Palabras clave recomendadas: 'Publicidad Programática', 'Estrategia de Marketing Integrado', 'Optimización de Anuncios basada en IA'</li>
+                <li>Cursos gratuitos de YouTube: <a href="https://www.youtube.com" target="_blank">Análisis Avanzado de Datos de Marketing Digital</a></li>
+            `;
+        } else if (score >= 31) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Estrategias de Campañas Publicitarias Enfocadas en Rendimiento</a></li>
+                <li>Palabras clave recomendadas: 'Optimización de Conversiones', 'Análisis de Anuncios Basado en Datos', 'Retargeting Avanzado'</li>
+                <li>Cursos gratuitos de YouTube: <a href="https://www.youtube.com" target="_blank">Estrategias Prácticas de Marketing de Rendimiento</a></li>
+            `;
+        } else if (score >= 21) {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Guía Práctica de Publicidad Digital</a></li>
+                <li>Palabras clave recomendadas: 'Segmentación Efectiva', 'Análisis de Rendimiento de Anuncios', 'Optimización Creativa'</li>
+                <li>Cursos gratuitos de YouTube: <a href="https://www.youtube.com" target="_blank">Curso Intermedio de Publicidad Digital</a></li>
+            `;
+        } else {
+            resources += `
+                <li><a href="https://www.notion.so" target="_blank">Guía Básica de Publicidad Digital</a></li>
+                <li>Palabras clave recomendadas: 'Fundamentos de Anuncios de Facebook', 'Introducción a Google Ads', 'Métricas de Rendimiento de Anuncios'</li>
+                <li>Cursos gratuitos de YouTube: <a href="https://www.youtube.com" target="_blank">Guía para Principiantes en Publicidad Digital</a></li>
+            `;
+        }
     }
     
     resources += '</ul>';
@@ -615,22 +758,32 @@ function getLearningResources(score) {
 }
 
 // 레이더 차트 그리기
-function drawRadarChart(score) {
+function drawRadarChart(score, lang) {
     const canvas = document.getElementById('abilityChart');
+    
+    // 언어에 따른 레이블 설정
+    let labels;
+    if (lang === 'ko') {
+        labels = ['플랫폼 활용', '타겟팅 전략', '성과 분석', '최적화 기술'];
+    } else if (lang === 'en') {
+        labels = ['Platform Usage', 'Targeting Strategy', 'Performance Analysis', 'Optimization Skills'];
+    } else if (lang === 'es') {
+        labels = ['Uso de Plataforma', 'Estrategia de Segmentación', 'Análisis de Rendimiento', 'Habilidades de Optimización'];
+    }
     
     // 각 항목별 세부 점수 (이 데이터는 실제로는 각 문항별 응답에 따라 계산해야 함)
     const items = [
-        { label: '플랫폼 활용', score: calculateCategoryScore(0, 3) },   // 문항 1-3
-        { label: '타겟팅 전략', score: calculateCategoryScore(3, 5) },   // 문항 4-5
-        { label: '성과 분석', score: calculateCategoryScore(5, 8) },     // 문항 6-8
-        { label: '최적화 기술', score: calculateCategoryScore(8, 10) }   // 문항 9-10
+        { label: labels[0], score: calculateCategoryScore(0, 3) },   // 문항 1-3
+        { label: labels[1], score: calculateCategoryScore(3, 5) },   // 문항 4-5
+        { label: labels[2], score: calculateCategoryScore(5, 8) },   // 문항 6-8
+        { label: labels[3], score: calculateCategoryScore(8, 10) }   // 문항 9-10
     ];
     
     // 레이더 차트 데이터
     const data = {
         labels: items.map(item => item.label),
         datasets: [{
-            label: '능력 진단',
+            label: lang === 'ko' ? '능력 진단' : lang === 'en' ? 'Skills Assessment' : 'Evaluación de Habilidades',
             data: items.map(item => item.score),
             fill: true,
             backgroundColor: getChartColor(score, 0.2),

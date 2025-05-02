@@ -228,17 +228,203 @@ function getResultMessage(score) {
 function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
+    const category = "마케팅 기초 이해도";
     
-    scoreDisplay.textContent = `총점: ${score}점`;
-    resultMessageElement.textContent = message;
+    // 언어에 따른 점수 표시
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    
+    // 결론 도출 부분 - 개선된 구조
+    let resultHTML = `
+        <h2>1. 요약된 능력 진단</h2>
+        <p>${category}: ${score} — ${getAbilityLevel(score)}</p>
+        
+        <h2>2. 강점 분석</h2>
+        <p>${getStrengthAnalysis(score)}</p>
+        
+        <h2>3. 보완이 필요한 분야 제시</h2>
+        <p>${getWeaknessAnalysis(score)}</p>
+        
+        <h2>4. 추천 학습 방향 / 자료</h2>
+        <div class="recommended-resources">
+            ${getLearningResources(score)}
+        </div>
+        
+        <div class="chart-container">
+            <h3>능력 진단 차트</h3>
+            <div class="radar-chart">
+                <canvas id="abilityChart" width="300" height="300"></canvas>
+            </div>
+        </div>
+    `;
+    
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
+    resultMessageElement.innerHTML = resultHTML;
     
     surveyContainer.style.display = 'none';
     resultContainer.style.display = 'block';
+    
+    // 차트 생성
+    drawRadarChart(score);
+}
+
+// 능력 수준 반환
+function getAbilityLevel(score) {
+    if (score >= 36) {
+        return "마케팅 원리와 전략을 깊이 이해하는 고급 수준입니다.";
+    } else if (score >= 31) {
+        return "마케팅 기본 개념과 실무 적용이 가능한 중급 수준입니다.";
+    } else if (score >= 21) {
+        return "마케팅 기초 원리를 이해하는 기초 수준입니다.";
+    } else {
+        return "마케팅에 대한 이해가 부족한 입문 수준입니다.";
+    }
+}
+
+// 강점 분석 반환
+function getStrengthAnalysis(score) {
+    if (score >= 36) {
+        return "당신은 마케팅의 핵심 원리와 다양한 전략적 접근법을 깊이 이해하고 있습니다. 마케팅 믹스의 요소들을 전략적으로 활용할 수 있으며, 소비자 행동과 시장 분석에 기반한 마케팅 의사결정을 내릴 수 있는 능력을 갖추고 있습니다.";
+    } else if (score >= 31) {
+        return "당신은 마케팅 기본 개념과 주요 전략을 이해하고 있습니다. 타겟팅, 포지셔닝, 프로모션 전략 등 마케팅 활동의 중요 요소를 파악하고 있으며, 실무에 적용할 수 있는 기본적인 지식을 갖추고 있습니다.";
+    } else if (score >= 21) {
+        return "당신은 마케팅의 기초적인 개념과 원리를 이해하고 있습니다. 4P, 시장 세분화, 기본적인 프로모션 방법 등 마케팅의 기본 요소에 대한 지식을 갖추고 있습니다.";
+    } else {
+        return "당신은 마케팅에 대한 기초적인 인식을 가지고 있으며, 가장 기본적인 마케팅 용어와 개념에 대해 알고 있습니다. 마케팅의 역할과 중요성을 이해하는 수준입니다.";
+    }
+}
+
+// 약점 분석 반환
+function getWeaknessAnalysis(score) {
+    if (score >= 36) {
+        return "고급 수준의 마케팅 이해도를 갖추고 있지만, 더욱 심화된 데이터 분석 기반 마케팅, 신기술을 활용한 최신 마케팅 트렌드, 글로벌 마케팅 전략 등의 영역에서 전문성을 더 발전시킬 수 있습니다.";
+    } else if (score >= 31) {
+        return "마케팅 ROI 측정, 통합 마케팅 커뮤니케이션 전략 수립, 브랜드 가치 구축 등의 영역에서 더 깊은 이해와 실무 적용 능력을 개발할 필요가 있습니다.";
+    } else if (score >= 21) {
+        return "마케팅 전략 수립과 실행, 소비자 행동 분석, 마케팅 성과 측정 등의 영역에서 지식과 경험을 확장할 필요가 있습니다. 이론적 지식을 실무에 적용하는 능력을 키우는 것이 중요합니다.";
+    } else {
+        return "마케팅의 기본 원리와 핵심 개념에 대한 체계적인 이해가 필요합니다. 4P(제품, 가격, 유통, 촉진)의 기본 개념, 시장 세분화, 타겟팅, 포지셔닝 등 마케팅의 기초를 다지는 것이 중요합니다.";
+    }
+}
+
+// 학습 자료 반환
+function getLearningResources(score) {
+    let resources = '<ul>';
+    
+    if (score >= 36) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">고급 마케팅 전략과 분석</a></li>
+            <li>추천 키워드: '데이터 기반 마케팅', '고객 생애 가치 최적화', '브랜드 에쿼티 관리'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">마케팅 리더를 위한 전략적 사고</a></li>
+        `;
+    } else if (score >= 31) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">마케팅 전략 심화 과정</a></li>
+            <li>추천 키워드: '통합 마케팅 커뮤니케이션', '마케팅 ROI 분석', '소비자 인사이트 발굴'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">효과적인 마케팅 전략 수립하기</a></li>
+        `;
+    } else if (score >= 21) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">마케팅 핵심 역량 강화</a></li>
+            <li>추천 키워드: '마케팅 믹스 최적화', '타겟 시장 분석', '마케팅 계획 수립'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">실무에 바로 적용하는 마케팅 기법</a></li>
+        `;
+    } else {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">마케팅 기초 이해하기</a></li>
+            <li>추천 키워드: '마케팅 4P', '시장 세분화', '기본 마케팅 용어'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">마케팅 입문자를 위한 기초 강의</a></li>
+        `;
+    }
+    
+    resources += '</ul>';
+    return resources;
+}
+
+// 레이더 차트 그리기
+function drawRadarChart(score) {
+    const canvas = document.getElementById('abilityChart');
+    
+    // 각 항목별 세부 점수 (이 데이터는 실제로는 각 문항별 응답에 따라 계산해야 함)
+    const items = [
+        { label: '기본 이론', score: calculateCategoryScore(0, 3) },     // 문항 1-3
+        { label: '전략 이해', score: calculateCategoryScore(3, 5) },     // 문항 4-5
+        { label: '분석 능력', score: calculateCategoryScore(5, 8) },     // 문항 6-8
+        { label: '트렌드 이해', score: calculateCategoryScore(8, 10) }   // 문항 9-10
+    ];
+    
+    // 레이더 차트 데이터
+    const data = {
+        labels: items.map(item => item.label),
+        datasets: [{
+            label: '능력 진단',
+            data: items.map(item => item.score),
+            fill: true,
+            backgroundColor: getChartColor(score, 0.2),
+            borderColor: getChartColor(score, 1),
+            pointBackgroundColor: getChartColor(score, 1),
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: getChartColor(score, 1)
+        }]
+    };
+    
+    // 차트 옵션
+    const options = {
+        scales: {
+            r: {
+                angleLines: {
+                    display: true
+                },
+                suggestedMin: 0,
+                suggestedMax: 4
+            }
+        }
+    };
+    
+    // 차트 생성
+    if (window.myRadarChart) {
+        window.myRadarChart.destroy();
+    }
+    
+    window.myRadarChart = new Chart(canvas, {
+        type: 'radar',
+        data: data,
+        options: options
+    });
+}
+
+// 각 카테고리별 점수 계산 (start부터 end까지의 문항 평균)
+function calculateCategoryScore(start, end) {
+    let sum = 0;
+    let count = 0;
+    
+    for (let i = start; i < end && i < questions.length; i++) {
+        if (answers[i] !== null) {
+            sum += questions[i].options[answers[i]].score;
+            count++;
+        }
+    }
+    
+    return count > 0 ? sum / count : 0;
+}
+
+// 점수에 따른 차트 색상 반환
+function getChartColor(score, alpha) {
+    if (score >= 36) {
+        return `rgba(0, 128, 0, ${alpha})`; // 초록색
+    } else if (score >= 31) {
+        return `rgba(0, 128, 0, ${alpha})`; // 초록색
+    } else if (score >= 21) {
+        return `rgba(255, 193, 7, ${alpha})`; // 노란색
+    } else {
+        return `rgba(220, 53, 69, ${alpha})`; // 빨간색
+    }
 }
 
 // 메인 페이지로 이동
 function goToMainPage() {
-    window.location.href = 'index.html';
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    window.location.href = `index.html?lang=${lang}`;
 }
 
 // 이벤트 리스너

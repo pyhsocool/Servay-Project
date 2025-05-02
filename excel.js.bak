@@ -393,7 +393,7 @@ function updateSurveyLanguage(lang) {
     // 결과 창이 표시 중이라면 결과도 업데이트
     if (resultContainer.style.display !== 'none') {
         const score = calculateScore();
-        scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
+        scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}점`;
         resultMessageElement.textContent = getResultMessage(score);
     }
 }
@@ -497,7 +497,7 @@ function showResult() {
     
     // 언어에 따른 점수 표시
     const lang = localStorage.getItem('selectedLanguage') || 'ko';
-    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}점`;
     resultMessageElement.textContent = message;
     
     surveyContainer.style.display = 'none';
@@ -512,24 +512,6 @@ function goToMainPage() {
 
 // 페이지 로드 시 초기화
 document.addEventListener('DOMContentLoaded', function() {
-    // URL 파라미터에서 언어 정보 가져오기
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = urlParams.get('lang');
-    
-    // localStorage에 저장된 언어 정보 확인
-    let savedLanguage = localStorage.getItem('selectedLanguage');
-    
-    // URL 파라미터에 언어 정보가 있으면 우선 사용하고 localStorage에 저장
-    if (urlLang) {
-        localStorage.setItem('selectedLanguage', urlLang);
-        savedLanguage = urlLang;
-    }
-    
-    // 언어에 따라 설문 데이터 업데이트
-    if (savedLanguage) {
-        updateSurveyLanguage(savedLanguage);
-    }
-    
     // 공통 언어 설정 적용
     if (typeof applyStoredLanguageToPage === 'function') {
         applyStoredLanguageToPage();
@@ -544,4 +526,4 @@ document.addEventListener('DOMContentLoaded', function() {
     submitBtn.addEventListener('click', showResult);
     restartBtn.addEventListener('click', init);
     backToMainBtn.addEventListener('click', goToMainPage);
-}); 
+});

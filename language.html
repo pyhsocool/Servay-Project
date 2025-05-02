@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>외국어 회화 능력 자가 진단</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- 공통 스크립트 - 언어 관련 기능 -->
+    <script src="main.js"></script>
+    <!-- Chart.js 라이브러리 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="container">
@@ -54,8 +58,8 @@
 
         <div id="result" class="result-container" style="display: none;">
             <h1>결과</h1>
-            <div id="score-display"></div>
-            <div id="result-message"></div>
+            <div id="score-display" class="score-display"></div>
+            <div id="result-message" class="detailed-result"></div>
             <div class="buttons">
                 <button id="restart-btn">다시 시작</button>
                 <button id="back-to-main-btn">메인으로</button>

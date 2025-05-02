@@ -1,5 +1,5 @@
-// 설문 질문 데이터
-const questions = [
+// 한국어 설문 질문 데이터
+const questionsKO = [
     {
         question: "영어로 기본적인 의사소통을 할 수 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
-// 결과 메시지 데이터
-const resultMessages = [
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I can communicate basic ideas in English.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Chinese.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Japanese.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Spanish.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Indonesian.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Arabic.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in German.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in French.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Russian.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate basic ideas in Vietnamese.",
+        options: [
+            { text: "Fluently", score: 4 },
+            { text: "Daily conversation level", score: 3 },
+            { text: "Only simple expressions", score: 2 },
+            { text: "Almost impossible", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo comunicar ideas básicas en inglés.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en chino.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en japonés.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en español.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en indonesio.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en árabe.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en alemán.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en francés.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en ruso.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicar ideas básicas en vietnamita.",
+        options: [
+            { text: "Con fluidez", score: 4 },
+            { text: "Nivel de conversación diaria", score: 3 },
+            { text: "Solo expresiones simples", score: 2 },
+            { text: "Casi imposible", score: 1 }
+        ]
+    }
+];
+
+// 한국어 결과 메시지 데이터
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,58 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You are not familiar with most foreign languages. Start learning basic expressions in 1-2 languages that interest you."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Lower Intermediate Level: You can communicate basic ideas in a few languages. Practice using them in more diverse situations."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Upper Intermediate Level: You can communicate in several languages. Improve your fluency and learn more professional expressions."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You possess excellent language skills and can speak various languages proficiently. Try deeper communication with cultural understanding."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: No estás familiarizado con la mayoría de los idiomas extranjeros. Comienza aprendiendo expresiones básicas en 1-2 idiomas que te interesen."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Intermedio Bajo: Puedes comunicar ideas básicas en algunos idiomas. Practica usándolos en situaciones más diversas."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio Alto: Puedes comunicarte en varios idiomas. Mejora tu fluidez y aprende expresiones más profesionales."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Posees excelentes habilidades lingüísticas y puedes hablar varios idiomas con fluidez. Intenta una comunicación más profunda con comprensión cultural."
+    }
+];
+
+// 현재 사용 중인 언어 데이터
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -131,6 +371,32 @@ const scoreDisplay = document.getElementById('score-display');
 const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
+
+// 언어에 따라 설문 데이터 업데이트
+function updateSurveyLanguage(lang) {
+    if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    } else {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    }
+    
+    // 현재 보고 있는 질문 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    }
+    
+    // 결과 창이 표시 중이라면 결과도 업데이트
+    if (resultContainer.style.display !== 'none') {
+        const score = calculateScore();
+        scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
+        resultMessageElement.textContent = getResultMessage(score);
+    }
+}
 
 // 초기화
 function init() {
@@ -229,7 +495,9 @@ function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
     
-    scoreDisplay.textContent = `총점: ${score}점`;
+    // 언어에 따른 점수 표시
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
     resultMessageElement.textContent = message;
     
     surveyContainer.style.display = 'none';
@@ -238,15 +506,42 @@ function showResult() {
 
 // 메인 페이지로 이동
 function goToMainPage() {
-    window.location.href = 'index.html';
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    window.location.href = `index.html?lang=${lang}`;
 }
 
-// 이벤트 리스너
-prevBtn.addEventListener('click', goToPreviousQuestion);
-nextBtn.addEventListener('click', goToNextQuestion);
-submitBtn.addEventListener('click', showResult);
-restartBtn.addEventListener('click', init);
-backToMainBtn.addEventListener('click', goToMainPage);
-
 // 페이지 로드 시 초기화
-init(); 
+document.addEventListener('DOMContentLoaded', function() {
+    // URL 파라미터에서 언어 정보 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    
+    // localStorage에 저장된 언어 정보 확인
+    let savedLanguage = localStorage.getItem('selectedLanguage');
+    
+    // URL 파라미터에 언어 정보가 있으면 우선 사용하고 localStorage에 저장
+    if (urlLang) {
+        localStorage.setItem('selectedLanguage', urlLang);
+        savedLanguage = urlLang;
+    }
+    
+    // 언어에 따라 설문 데이터 업데이트
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+    
+    // 공통 언어 설정 적용
+    if (typeof applyStoredLanguageToPage === 'function') {
+        applyStoredLanguageToPage();
+    }
+    
+    // 초기화
+    init();
+    
+    // 이벤트 리스너
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+}); 

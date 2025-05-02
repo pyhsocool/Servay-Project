@@ -1,5 +1,5 @@
 // 설문 질문 데이터
-const questions = [
+const questionsKO = [
     {
         question: "단락과 문단을 적절히 구성하여 논리적인 글을 작성할 수 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I can write logical texts with appropriate paragraphs and sections.",
+        options: [
+            { text: "I can create perfect paragraph structure and development", score: 4 },
+            { text: "I can make basic paragraph structures", score: 3 },
+            { text: "I can only write simple texts", score: 2 },
+            { text: "I have no experience with logical text structure", score: 1 }
+        ]
+    },
+    {
+        question: "I can create various types of documents (reports, proposals, summaries, etc.) for specific purposes.",
+        options: [
+            { text: "I am proficient in writing all document types", score: 4 },
+            { text: "I can write basic document types", score: 3 },
+            { text: "I have only written simple reports", score: 2 },
+            { text: "I have no experience writing specific documents", score: 1 }
+        ]
+    },
+    {
+        question: "I can write accurately using correct spelling, grammar, and punctuation.",
+        options: [
+            { text: "I have perfect grammar and spelling skills", score: 4 },
+            { text: "I can correct basic grammar errors", score: 3 },
+            { text: "I can only check basic spelling", score: 2 },
+            { text: "I have no experience reviewing grammar/spelling", score: 1 }
+        ]
+    },
+    {
+        question: "I can use professional terminology and industry terms to write expert documents.",
+        options: [
+            { text: "I can accurately use professional terminology", score: 4 },
+            { text: "I can use basic industry terms", score: 3 },
+            { text: "I only know simple professional terms", score: 2 },
+            { text: "I have no experience using professional terms", score: 1 }
+        ]
+    },
+    {
+        question: "I can effectively use tables, graphs, and images to visualize information.",
+        options: [
+            { text: "I can visualize even complex data", score: 4 },
+            { text: "I can use basic tables/graphs", score: 3 },
+            { text: "I have only inserted simple images", score: 2 },
+            { text: "I have no experience with visualization elements", score: 1 }
+        ]
+    },
+    {
+        question: "I can select and apply appropriate structure and format for a document's purpose.",
+        options: [
+            { text: "I can design optimal structures for specific purposes", score: 4 },
+            { text: "I can apply basic document structures", score: 3 },
+            { text: "I have only used template structures", score: 2 },
+            { text: "I have no experience structuring documents", score: 1 }
+        ]
+    },
+    {
+        question: "I can write using appropriate language and style considering the reader's level and interests.",
+        options: [
+            { text: "I can adapt to various reader groups", score: 4 },
+            { text: "I can consider basic reader needs", score: 3 },
+            { text: "I can only write in a general style", score: 2 },
+            { text: "I have no experience tailoring to readers", score: 1 }
+        ]
+    },
+    {
+        question: "I can summarize complex information concisely and clearly.",
+        options: [
+            { text: "I can clearly summarize even complex content", score: 4 },
+            { text: "I can write basic summaries", score: 3 },
+            { text: "I can only summarize simple content", score: 2 },
+            { text: "I have no experience writing summaries", score: 1 }
+        ]
+    },
+    {
+        question: "I can properly cite sources using quotations, references, and footnotes.",
+        options: [
+            { text: "I can use various citation styles", score: 4 },
+            { text: "I can create basic references", score: 3 },
+            { text: "I have only marked simple sources", score: 2 },
+            { text: "I have no experience citing sources", score: 1 }
+        ]
+    },
+    {
+        question: "I can effectively proofread and edit documents.",
+        options: [
+            { text: "I can do professional proofreading/editing", score: 4 },
+            { text: "I can perform basic proofreading", score: 3 },
+            { text: "I can only fix simple typos", score: 2 },
+            { text: "I have no proofreading/editing experience", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo escribir textos lógicos con párrafos y secciones apropiados.",
+        options: [
+            { text: "Puedo crear una estructura y desarrollo perfecto de párrafos", score: 4 },
+            { text: "Puedo hacer estructuras básicas de párrafos", score: 3 },
+            { text: "Solo puedo escribir textos simples", score: 2 },
+            { text: "No tengo experiencia con estructura lógica de textos", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear varios tipos de documentos (informes, propuestas, resúmenes, etc.) para fines específicos.",
+        options: [
+            { text: "Soy competente en la escritura de todo tipo de documentos", score: 4 },
+            { text: "Puedo escribir tipos básicos de documentos", score: 3 },
+            { text: "Solo he escrito informes simples", score: 2 },
+            { text: "No tengo experiencia escribiendo documentos específicos", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo escribir con precisión usando ortografía, gramática y puntuación correctas.",
+        options: [
+            { text: "Tengo habilidades perfectas de gramática y ortografía", score: 4 },
+            { text: "Puedo corregir errores gramaticales básicos", score: 3 },
+            { text: "Solo puedo verificar la ortografía básica", score: 2 },
+            { text: "No tengo experiencia revisando gramática/ortografía", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo usar terminología profesional y términos de la industria para escribir documentos especializados.",
+        options: [
+            { text: "Puedo usar con precisión terminología profesional", score: 4 },
+            { text: "Puedo usar términos básicos de la industria", score: 3 },
+            { text: "Solo conozco términos profesionales simples", score: 2 },
+            { text: "No tengo experiencia usando términos profesionales", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo usar eficazmente tablas, gráficos e imágenes para visualizar información.",
+        options: [
+            { text: "Puedo visualizar incluso datos complejos", score: 4 },
+            { text: "Puedo usar tablas/gráficos básicos", score: 3 },
+            { text: "Solo he insertado imágenes simples", score: 2 },
+            { text: "No tengo experiencia con elementos de visualización", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo seleccionar y aplicar la estructura y formato apropiados para el propósito de un documento.",
+        options: [
+            { text: "Puedo diseñar estructuras óptimas para fines específicos", score: 4 },
+            { text: "Puedo aplicar estructuras básicas de documentos", score: 3 },
+            { text: "Solo he usado estructuras de plantillas", score: 2 },
+            { text: "No tengo experiencia estructurando documentos", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo escribir usando lenguaje y estilo apropiados considerando el nivel e intereses del lector.",
+        options: [
+            { text: "Puedo adaptarme a varios grupos de lectores", score: 4 },
+            { text: "Puedo considerar necesidades básicas del lector", score: 3 },
+            { text: "Solo puedo escribir en un estilo general", score: 2 },
+            { text: "No tengo experiencia adaptándome a los lectores", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo resumir información compleja de manera concisa y clara.",
+        options: [
+            { text: "Puedo resumir claramente incluso contenido complejo", score: 4 },
+            { text: "Puedo escribir resúmenes básicos", score: 3 },
+            { text: "Solo puedo resumir contenido simple", score: 2 },
+            { text: "No tengo experiencia escribiendo resúmenes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo citar correctamente fuentes usando citas, referencias y notas al pie.",
+        options: [
+            { text: "Puedo usar varios estilos de citación", score: 4 },
+            { text: "Puedo crear referencias básicas", score: 3 },
+            { text: "Solo he marcado fuentes simples", score: 2 },
+            { text: "No tengo experiencia citando fuentes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo revisar y editar documentos de manera efectiva.",
+        options: [
+            { text: "Puedo hacer corrección/edición profesional", score: 4 },
+            { text: "Puedo realizar corrección básica", score: 3 },
+            { text: "Solo puedo corregir erratas simples", score: 2 },
+            { text: "No tengo experiencia en corrección/edición", score: 1 }
+        ]
+    }
+];
+
 // 결과 메시지 데이터
-const resultMessages = [
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,58 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to develop understanding of basic document writing concepts and principles. Start with grammar and spelling basics, then learn paragraph structuring methods."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You have basic document writing skills but may struggle with more complex documents. Try writing various types of documents to gain experience."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You can write various types of documents. Learn more professional document writing techniques and reader-centric writing."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You have professional document writing skills. You are proficient at clearly conveying complex information and writing for diverse audiences."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas desarrollar la comprensión de conceptos y principios básicos de redacción de documentos. Comienza con los fundamentos de gramática y ortografía, luego aprende métodos de estructuración de párrafos."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Tienes habilidades básicas de redacción de documentos pero puedes tener dificultades con documentos más complejos. Intenta escribir varios tipos de documentos para ganar experiencia."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Puedes escribir varios tipos de documentos. Aprende técnicas más profesionales de redacción de documentos y escritura centrada en el lector."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Tienes habilidades profesionales de redacción de documentos. Eres competente para transmitir claramente información compleja y escribir para audiencias diversas."
+    }
+];
+
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -132,6 +372,27 @@ const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
 
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'ko') {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    } else if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    }
+    
+    // 현재 화면 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    } else if (resultContainer.style.display !== 'none') {
+        showResult();
+    }
+}
+
 // 초기화
 function init() {
     currentQuestionIndex = 0;
@@ -139,6 +400,19 @@ function init() {
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -406,4 +680,19 @@ restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
 // 페이지 로드 시 초기화
-init(); 
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+}); 

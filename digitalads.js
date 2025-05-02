@@ -1,5 +1,5 @@
 // 설문 질문 데이터
-const questions = [
+const questionsKO = [
     {
         question: "주요 디지털 광고 플랫폼(구글, 페이스북, 인스타그램 등)의 특성과 장단점을 이해하고 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I understand the characteristics and advantages of major digital advertising platforms (Google, Facebook, Instagram, etc.).",
+        options: [
+            { text: "Expert knowledge of all major platforms", score: 4 },
+            { text: "Good understanding of main platforms", score: 3 },
+            { text: "Basic experience with some platforms", score: 2 },
+            { text: "Limited platform knowledge", score: 1 }
+        ]
+    },
+    {
+        question: "I can segment target audiences and develop appropriate targeting strategies.",
+        options: [
+            { text: "Advanced audience segmentation skills", score: 4 },
+            { text: "Can set up basic targeting parameters", score: 3 },
+            { text: "Can only use demographic targeting", score: 2 },
+            { text: "Limited targeting experience", score: 1 }
+        ]
+    },
+    {
+        question: "I can effectively allocate advertising budgets and develop bidding strategies.",
+        options: [
+            { text: "Advanced ROAS-based optimization", score: 4 },
+            { text: "Basic budget allocation skills", score: 3 },
+            { text: "Simple budget setting only", score: 2 },
+            { text: "Limited budget management experience", score: 1 }
+        ]
+    },
+    {
+        question: "I can conduct keyword research and develop effective search advertising strategies.",
+        options: [
+            { text: "Advanced keyword analysis/strategy skills", score: 4 },
+            { text: "Can select appropriate keywords", score: 3 },
+            { text: "Can only use general keywords", score: 2 },
+            { text: "Limited keyword research experience", score: 1 }
+        ]
+    },
+    {
+        question: "I can plan and improve advertising creative materials (images, text, video).",
+        options: [
+            { text: "Advanced creative optimization skills", score: 4 },
+            { text: "Can create and improve basic materials", score: 3 },
+            { text: "Can only use template-based materials", score: 2 },
+            { text: "Limited creative planning experience", score: 1 }
+        ]
+    },
+    {
+        question: "I can design A/B tests and analyze results to improve ad performance.",
+        options: [
+            { text: "Systematic testing/analysis expert", score: 4 },
+            { text: "Can perform basic A/B testing", score: 3 },
+            { text: "Only tried simple comparison tests", score: 2 },
+            { text: "Limited A/B testing experience", score: 1 }
+        ]
+    },
+    {
+        question: "I understand and can analyze advertising performance metrics (CTR, CPC, CPA, ROAS, etc.).",
+        options: [
+            { text: "Advanced metrics analysis skills", score: 4 },
+            { text: "Can analyze basic metrics", score: 3 },
+            { text: "Can only check basic indicators", score: 2 },
+            { text: "Limited metrics understanding", score: 1 }
+        ]
+    },
+    {
+        question: "I can develop and implement remarketing/retargeting strategies.",
+        options: [
+            { text: "Advanced retargeting strategy skills", score: 4 },
+            { text: "Can set up basic remarketing", score: 3 },
+            { text: "Only configured simple retargeting", score: 2 },
+            { text: "Limited remarketing experience", score: 1 }
+        ]
+    },
+    {
+        question: "I can install and utilize tracking codes and conversion pixels.",
+        options: [
+            { text: "Advanced tag management skills", score: 4 },
+            { text: "Can install basic pixels", score: 3 },
+            { text: "Can only install with guidance", score: 2 },
+            { text: "Limited tracking code experience", score: 1 }
+        ]
+    },
+    {
+        question: "I can create performance reports and derive insights from advertising data.",
+        options: [
+            { text: "Advanced analysis/strategic insights", score: 4 },
+            { text: "Can create basic reports", score: 3 },
+            { text: "Can only compile simple data", score: 2 },
+            { text: "Limited reporting experience", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Comprendo las características y ventajas de las principales plataformas de publicidad digital (Google, Facebook, Instagram, etc.).",
+        options: [
+            { text: "Conocimiento experto de todas las plataformas principales", score: 4 },
+            { text: "Buena comprensión de las plataformas principales", score: 3 },
+            { text: "Experiencia básica con algunas plataformas", score: 2 },
+            { text: "Conocimiento limitado de plataformas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo segmentar audiencias objetivo y desarrollar estrategias de targeting apropiadas.",
+        options: [
+            { text: "Habilidades avanzadas de segmentación de audiencia", score: 4 },
+            { text: "Puedo configurar parámetros básicos de targeting", score: 3 },
+            { text: "Solo puedo usar targeting demográfico", score: 2 },
+            { text: "Experiencia limitada en targeting", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo asignar eficazmente presupuestos publicitarios y desarrollar estrategias de puja.",
+        options: [
+            { text: "Optimización avanzada basada en ROAS", score: 4 },
+            { text: "Habilidades básicas de asignación de presupuesto", score: 3 },
+            { text: "Solo configuración simple de presupuesto", score: 2 },
+            { text: "Experiencia limitada en gestión de presupuesto", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo realizar investigación de palabras clave y desarrollar estrategias efectivas de publicidad en buscadores.",
+        options: [
+            { text: "Habilidades avanzadas de análisis/estrategia de palabras clave", score: 4 },
+            { text: "Puedo seleccionar palabras clave apropiadas", score: 3 },
+            { text: "Solo puedo usar palabras clave generales", score: 2 },
+            { text: "Experiencia limitada en investigación de palabras clave", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo planificar y mejorar materiales creativos publicitarios (imágenes, texto, video).",
+        options: [
+            { text: "Habilidades avanzadas de optimización creativa", score: 4 },
+            { text: "Puedo crear y mejorar materiales básicos", score: 3 },
+            { text: "Solo puedo usar materiales basados en plantillas", score: 2 },
+            { text: "Experiencia limitada en planificación creativa", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo diseñar pruebas A/B y analizar resultados para mejorar el rendimiento publicitario.",
+        options: [
+            { text: "Experto en pruebas/análisis sistemáticos", score: 4 },
+            { text: "Puedo realizar pruebas A/B básicas", score: 3 },
+            { text: "Solo he probado pruebas de comparación simples", score: 2 },
+            { text: "Experiencia limitada en pruebas A/B", score: 1 }
+        ]
+    },
+    {
+        question: "Comprendo y puedo analizar métricas de rendimiento publicitario (CTR, CPC, CPA, ROAS, etc.).",
+        options: [
+            { text: "Habilidades avanzadas de análisis de métricas", score: 4 },
+            { text: "Puedo analizar métricas básicas", score: 3 },
+            { text: "Solo puedo verificar indicadores básicos", score: 2 },
+            { text: "Comprensión limitada de métricas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo desarrollar e implementar estrategias de remarketing/retargeting.",
+        options: [
+            { text: "Habilidades avanzadas en estrategia de retargeting", score: 4 },
+            { text: "Puedo configurar remarketing básico", score: 3 },
+            { text: "Solo he configurado retargeting simple", score: 2 },
+            { text: "Experiencia limitada en remarketing", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo instalar y utilizar códigos de seguimiento y píxeles de conversión.",
+        options: [
+            { text: "Habilidades avanzadas de gestión de etiquetas", score: 4 },
+            { text: "Puedo instalar píxeles básicos", score: 3 },
+            { text: "Solo puedo instalar con orientación", score: 2 },
+            { text: "Experiencia limitada con códigos de seguimiento", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear informes de rendimiento y obtener insights de datos publicitarios.",
+        options: [
+            { text: "Análisis avanzado/insights estratégicos", score: 4 },
+            { text: "Puedo crear informes básicos", score: 3 },
+            { text: "Solo puedo compilar datos simples", score: 2 },
+            { text: "Experiencia limitada en informes", score: 1 }
+        ]
+    }
+];
+
 // 결과 메시지 데이터
-const resultMessages = [
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,58 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to develop a basic understanding of digital advertising concepts. Start by learning the fundamentals of major advertising platforms and running simple campaigns."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You have basic digital advertising skills but need to learn more effective strategy development and performance analysis. Try various targeting methods and A/B testing approaches."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You can effectively manage campaigns across multiple advertising platforms. Continue developing more sophisticated targeting and bidding strategies, and data-driven decision-making skills."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You have expert knowledge and practical skills in digital advertising. You can effectively plan and optimize complex campaigns and derive insights through in-depth data analysis."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas desarrollar una comprensión básica de los conceptos de publicidad digital. Comienza por aprender los fundamentos de las principales plataformas publicitarias y ejecutar campañas simples."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Tienes habilidades básicas de publicidad digital pero necesitas aprender estrategias más efectivas y análisis de rendimiento. Prueba varios métodos de segmentación y enfoques de pruebas A/B."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Puedes gestionar efectivamente campañas en múltiples plataformas publicitarias. Continúa desarrollando estrategias más sofisticadas de segmentación y puja, y habilidades de toma de decisiones basadas en datos."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Tienes conocimientos expertos y habilidades prácticas en publicidad digital. Puedes planificar y optimizar efectivamente campañas complejas y obtener insights mediante análisis de datos en profundidad."
+    }
+];
+
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -132,13 +372,47 @@ const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
 
-// 초기화
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'ko') {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    } else if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    }
+    
+    // 현재 화면 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    } else if (resultContainer.style.display !== 'none') {
+        showResult();
+    }
+}
+
+// 초기화 함수 수정
 function init() {
     currentQuestionIndex = 0;
     answers = new Array(questions.length).fill(null);
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -228,14 +502,43 @@ function getResultMessage(score) {
 function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
+    const category = "디지털 광고 능력";
     
     // 언어에 따른 점수 표시
     const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    
+    // 결론 도출 부분 - 개선된 구조
+    let resultHTML = `
+        <h2>1. 요약된 능력 진단</h2>
+        <p>${category}: ${score} — ${getAbilityLevel(score)}</p>
+        
+        <h2>2. 강점 분석</h2>
+        <p>${getStrengthAnalysis(score)}</p>
+        
+        <h2>3. 보완이 필요한 분야 제시</h2>
+        <p>${getWeaknessAnalysis(score)}</p>
+        
+        <h2>4. 추천 학습 방향 / 자료</h2>
+        <div class="recommended-resources">
+            ${getLearningResources(score)}
+        </div>
+        
+        <div class="chart-container">
+            <h3>능력 진단 차트</h3>
+            <div class="radar-chart">
+                <canvas id="abilityChart" width="300" height="300"></canvas>
+            </div>
+        </div>
+    `;
+    
     scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
-    resultMessageElement.textContent = message;
+    resultMessageElement.innerHTML = resultHTML;
     
     surveyContainer.style.display = 'none';
     resultContainer.style.display = 'block';
+    
+    // 차트 생성
+    drawRadarChart(score);
 }
 
 // 능력 수준 반환
@@ -405,5 +708,20 @@ submitBtn.addEventListener('click', showResult);
 restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
-// 페이지 로드 시 초기화
-init(); 
+// 페이지 로드 시 초기화 수정
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+}); 

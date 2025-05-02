@@ -229,16 +229,173 @@ function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
     
-    scoreDisplay.textContent = `총점: ${score}점`;
+    // 언어에 따른 점수 표시
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
     resultMessageElement.textContent = message;
     
     surveyContainer.style.display = 'none';
     resultContainer.style.display = 'block';
 }
 
+// 능력 수준 반환
+function getAbilityLevel(score) {
+    if (score >= 36) {
+        return "디지털 광고를 전문적으로 운영할 수 있는 고급 수준입니다.";
+    } else if (score >= 31) {
+        return "효과적인 디지털 광고 캠페인을 운영할 수 있는 중급 수준입니다.";
+    } else if (score >= 21) {
+        return "기본적인 디지털 광고 운영이 가능한 기초 수준입니다.";
+    } else {
+        return "디지털 광고에 대한 기본 지식이 필요한 초보 수준입니다.";
+    }
+}
+
+// 강점 분석 반환
+function getStrengthAnalysis(score) {
+    if (score >= 36) {
+        return "당신은 여러 플랫폼에서 정교한 디지털 광고 캠페인을 기획하고 운영할 수 있습니다. 데이터 분석을 통한 인사이트 도출, 정밀한 타겟팅 전략 수립, 효율적인 예산 관리, A/B 테스트 등 전문적인 기술을 갖추고 있습니다.";
+    } else if (score >= 31) {
+        return "당신은 주요 디지털 광고 플랫폼에서 효과적인 캠페인을 운영할 수 있습니다. 타겟 설정, 키워드 선택, 광고 문구 작성, 성과 분석 등의 기술을 잘 활용하고 있습니다.";
+    } else if (score >= 21) {
+        return "당신은 기본적인 디지털 광고 캠페인을 설정하고 운영할 수 있습니다. 주요 광고 플랫폼의 인터페이스를 이해하고, 간단한 광고를 집행할 수 있는 능력을 갖추고 있습니다.";
+    } else {
+        return "당신은 디지털 광고의 기본 개념에 대한 이해가 있으며, 주요 플랫폼의 존재와 역할을 알고 있습니다. 간단한 광고 설정과 모니터링이 가능합니다.";
+    }
+}
+
+// 약점 분석 반환
+function getWeaknessAnalysis(score) {
+    if (score >= 36) {
+        return "높은 수준의 광고 운영 능력을 갖추고 있지만, 새로운 광고 플랫폼과 기술 트렌드를 지속적으로 학습하고, 보다 정교한 자동화 및 AI 기반 최적화 기법을 익히면 더욱 전문성을 높일 수 있습니다.";
+    } else if (score >= 31) {
+        return "심층적인 데이터 분석 및 인사이트 도출 능력을 키울 필요가 있습니다. 또한 리마케팅, 전환 추적, A/B 테스트 등의 고급 기법을 더 효과적으로 활용하는 방법을 학습하면 좋겠습니다.";
+    } else if (score >= 21) {
+        return "다양한 광고 플랫폼과 포맷에 대한 경험이 부족합니다. 타겟팅 옵션을 더 정교하게 활용하고, 성과 분석 및 최적화 방법에 대한 학습이 필요합니다.";
+    } else {
+        return "디지털 광고의 기본 원리와 주요 플랫폼 사용법에 대한 이해가 부족합니다. 각 채널의 특성과 기본적인 광고 설정 방법, 성과 측정 지표에 대한 학습이 필요합니다.";
+    }
+}
+
+// 학습 자료 반환
+function getLearningResources(score) {
+    let resources = '<ul>';
+    
+    if (score >= 36) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">고급 디지털 광고 최적화 전략</a></li>
+            <li>추천 키워드: '프로그래매틱 광고', '통합 마케팅 전략', 'AI 기반 광고 최적화'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 마케팅 데이터 분석 심화</a></li>
+        `;
+    } else if (score >= 31) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">성과 중심 광고 캠페인 전략</a></li>
+            <li>추천 키워드: '전환 최적화', '데이터 기반 광고 분석', '고급 리타겟팅'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">퍼포먼스 마케팅 실전 전략</a></li>
+        `;
+    } else if (score >= 21) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">디지털 광고 실전 가이드</a></li>
+            <li>추천 키워드: '효과적인 타겟팅', '광고 성과 분석', '크리에이티브 최적화'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 광고 중급 과정</a></li>
+        `;
+    } else {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">디지털 광고 기초 가이드</a></li>
+            <li>추천 키워드: '페이스북 광고 기초', '구글 광고 입문', '광고 성과 지표'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">디지털 광고 입문자를 위한 가이드</a></li>
+        `;
+    }
+    
+    resources += '</ul>';
+    return resources;
+}
+
+// 레이더 차트 그리기
+function drawRadarChart(score) {
+    const canvas = document.getElementById('abilityChart');
+    
+    // 각 항목별 세부 점수 (이 데이터는 실제로는 각 문항별 응답에 따라 계산해야 함)
+    const items = [
+        { label: '플랫폼 활용', score: calculateCategoryScore(0, 3) },   // 문항 1-3
+        { label: '타겟팅 전략', score: calculateCategoryScore(3, 5) },   // 문항 4-5
+        { label: '성과 분석', score: calculateCategoryScore(5, 8) },     // 문항 6-8
+        { label: '최적화 기술', score: calculateCategoryScore(8, 10) }   // 문항 9-10
+    ];
+    
+    // 레이더 차트 데이터
+    const data = {
+        labels: items.map(item => item.label),
+        datasets: [{
+            label: '능력 진단',
+            data: items.map(item => item.score),
+            fill: true,
+            backgroundColor: getChartColor(score, 0.2),
+            borderColor: getChartColor(score, 1),
+            pointBackgroundColor: getChartColor(score, 1),
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: getChartColor(score, 1)
+        }]
+    };
+    
+    // 차트 옵션
+    const options = {
+        scales: {
+            r: {
+                angleLines: {
+                    display: true
+                },
+                suggestedMin: 0,
+                suggestedMax: 4
+            }
+        }
+    };
+    
+    // 차트 생성
+    if (window.myRadarChart) {
+        window.myRadarChart.destroy();
+    }
+    
+    window.myRadarChart = new Chart(canvas, {
+        type: 'radar',
+        data: data,
+        options: options
+    });
+}
+
+// 각 카테고리별 점수 계산 (start부터 end까지의 문항 평균)
+function calculateCategoryScore(start, end) {
+    let sum = 0;
+    let count = 0;
+    
+    for (let i = start; i < end && i < questions.length; i++) {
+        if (answers[i] !== null) {
+            sum += questions[i].options[answers[i]].score;
+            count++;
+        }
+    }
+    
+    return count > 0 ? sum / count : 0;
+}
+
+// 점수에 따른 차트 색상 반환
+function getChartColor(score, alpha) {
+    if (score >= 36) {
+        return `rgba(0, 128, 0, ${alpha})`; // 초록색
+    } else if (score >= 31) {
+        return `rgba(0, 128, 0, ${alpha})`; // 초록색
+    } else if (score >= 21) {
+        return `rgba(255, 193, 7, ${alpha})`; // 노란색
+    } else {
+        return `rgba(220, 53, 69, ${alpha})`; // 빨간색
+    }
+}
+
 // 메인 페이지로 이동
 function goToMainPage() {
-    window.location.href = 'index.html';
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    window.location.href = `index.html?lang=${lang}`;
 }
 
 // 이벤트 리스너

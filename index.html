@@ -8,9 +8,23 @@
     <meta name="author" content="서베이">
     <title>직무 역량 자가 진단</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- 공통 스크립트 - 언어 관련 기능 -->
+    <script src="main.js"></script>
 </head>
 <body>
     <div class="container" id="main-container">
+        <div class="language-selector">
+            <button class="lang-toggle">
+                <span class="current-lang">한국어</span>
+                <span class="lang-icon">▼</span>
+            </button>
+            <div class="lang-dropdown">
+                <button class="lang-btn active" data-lang="ko">한국어</button>
+                <button class="lang-btn" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="es">Español</button>
+            </div>
+        </div>
+        
         <div class="office-image">
             <svg viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
                 <!-- 배경 -->
@@ -132,7 +146,5 @@
             </div>
         </div>
     </div>
-
-    <script src="main.js"></script>
 </body>
 </html> 

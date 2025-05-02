@@ -229,16 +229,173 @@ function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
     
-    scoreDisplay.textContent = `총점: ${score}점`;
+    // 언어에 따른 점수 표시
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
     resultMessageElement.textContent = message;
     
     surveyContainer.style.display = 'none';
     resultContainer.style.display = 'block';
 }
 
+// 능력 수준 반환
+function getAbilityLevel(score) {
+    if (score >= 36) {
+        return "다양한 협업 도구를 능숙하게 활용할 수 있는 고급 수준입니다.";
+    } else if (score >= 31) {
+        return "여러 협업 도구를 효과적으로 사용할 수 있는 중급 수준입니다.";
+    } else if (score >= 21) {
+        return "기본적인 협업 도구는 사용할 수 있는 기초 수준입니다.";
+    } else {
+        return "협업 도구 활용 경험이 부족한 초보 수준입니다.";
+    }
+}
+
+// 강점 분석 반환
+function getStrengthAnalysis(score) {
+    if (score >= 36) {
+        return "당신은 다양한 협업 도구를 전문적으로 활용할 수 있습니다. 클라우드 문서 작업, 프로젝트 관리, 화상 회의, 버전 관리, 지식 관리 등 주요 협업 도구를 능숙하게 다루며 팀 생산성을 향상시킬 수 있습니다.";
+    } else if (score >= 31) {
+        return "당신은 여러 협업 도구를 효과적으로 활용할 수 있습니다. 특히 문서 공유, 메신저, 화상 회의 등의 기본적인 협업 도구를 능숙하게 다루며 팀 작업에 적극적으로 참여할 수 있습니다.";
+    } else if (score >= 21) {
+        return "당신은 기본적인 협업 도구를 사용할 수 있습니다. 구글 드라이브, 메신저, 화상 회의 도구 등 널리 사용되는 도구의 기본 기능을 이해하고 있습니다.";
+    } else {
+        return "당신은 일부 기본적인 협업 도구에 대한 경험이 있으며, 간단한 파일 공유나 메시지 교환과 같은 기초적인 기능을 사용할 수 있습니다.";
+    }
+}
+
+// 약점 분석 반환
+function getWeaknessAnalysis(score) {
+    if (score >= 36) {
+        return "이미 다양한 협업 도구를 잘 활용하고 있지만, 자동화 도구나 API 연동 등을 통한 워크플로우 최적화나 팀 전체의 협업 시스템 설계 능력을 더 발전시킬 수 있습니다.";
+    } else if (score >= 31) {
+        return "프로젝트 관리 도구, 버전 관리 시스템, 자동화 도구 등 더 전문적인 협업 도구 활용 능력을 개발할 필요가 있습니다. 또한 각 도구의 고급 기능을 더 익히면 좋겠습니다.";
+    } else if (score >= 21) {
+        return "다양한 협업 도구에 대한 경험이 부족합니다. 특히 프로젝트 관리, 지식 관리, 버전 관리 등의 도구 사용 능력을 향상시키고, 기존에 사용하는 도구의 고급 기능도 학습할 필요가 있습니다.";
+    } else {
+        return "기본적인 협업 도구에 대한 이해와 경험이 부족합니다. 구글 드라이브, Slack/Teams, Zoom 등 널리 사용되는 필수 협업 도구부터 익히는 것이 중요합니다.";
+    }
+}
+
+// 학습 자료 반환
+function getLearningResources(score) {
+    let resources = '<ul>';
+    
+    if (score >= 36) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">협업 워크플로우 최적화 및 자동화</a></li>
+            <li>추천 키워드: '협업 도구 자동화', 'API 연동', '협업 시스템 설계'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">기업을 위한 협업 시스템 구축하기</a></li>
+        `;
+    } else if (score >= 31) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">고급 협업 도구 마스터하기</a></li>
+            <li>추천 키워드: 'Jira 워크플로우 관리', 'Git 브랜치 전략', '노션 데이터베이스 활용'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">협업 도구 고급 활용법</a></li>
+        `;
+    } else if (score >= 21) {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">다양한 협업 도구 익히기</a></li>
+            <li>추천 키워드: '프로젝트 관리 도구 비교', '버전 관리 기초', '팀 커뮤니케이션 도구'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">업무 효율성을 높이는 협업 도구 활용법</a></li>
+        `;
+    } else {
+        resources += `
+            <li><a href="https://www.notion.so" target="_blank">협업 도구 기초 가이드</a></li>
+            <li>추천 키워드: '구글 워크스페이스 기초', 'Slack 사용법', 'Zoom 회의 참여'</li>
+            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">초보자를 위한 협업 도구 입문</a></li>
+        `;
+    }
+    
+    resources += '</ul>';
+    return resources;
+}
+
+// 레이더 차트 그리기
+function drawRadarChart(score) {
+    const canvas = document.getElementById('abilityChart');
+    
+    // 각 항목별 세부 점수 (이 데이터는 실제로는 각 문항별 응답에 따라 계산해야 함)
+    const items = [
+        { label: '문서 공유', score: calculateCategoryScore(0, 2) },     // 문항 1-2
+        { label: '프로젝트 관리', score: calculateCategoryScore(2, 5) }, // 문항 3-5
+        { label: '버전 관리', score: calculateCategoryScore(5, 7) },     // 문항 6-7
+        { label: '일정 조율', score: calculateCategoryScore(7, 10) }     // 문항 8-10
+    ];
+    
+    // 레이더 차트 데이터
+    const data = {
+        labels: items.map(item => item.label),
+        datasets: [{
+            label: '능력 진단',
+            data: items.map(item => item.score),
+            fill: true,
+            backgroundColor: getChartColor(score, 0.2),
+            borderColor: getChartColor(score, 1),
+            pointBackgroundColor: getChartColor(score, 1),
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: getChartColor(score, 1)
+        }]
+    };
+    
+    // 차트 옵션
+    const options = {
+        scales: {
+            r: {
+                angleLines: {
+                    display: true
+                },
+                suggestedMin: 0,
+                suggestedMax: 4
+            }
+        }
+    };
+    
+    // 차트 생성
+    if (window.myRadarChart) {
+        window.myRadarChart.destroy();
+    }
+    
+    window.myRadarChart = new Chart(canvas, {
+        type: 'radar',
+        data: data,
+        options: options
+    });
+}
+
+// 각 카테고리별 점수 계산 (start부터 end까지의 문항 평균)
+function calculateCategoryScore(start, end) {
+    let sum = 0;
+    let count = 0;
+    
+    for (let i = start; i < end && i < questions.length; i++) {
+        if (answers[i] !== null) {
+            sum += questions[i].options[answers[i]].score;
+            count++;
+        }
+    }
+    
+    return count > 0 ? sum / count : 0;
+}
+
+// 점수에 따른 차트 색상 반환
+function getChartColor(score, alpha) {
+    if (score >= 36) {
+        return `rgba(0, 128, 0, ${alpha})`; // 초록색
+    } else if (score >= 31) {
+        return `rgba(0, 128, 0, ${alpha})`; // 초록색
+    } else if (score >= 21) {
+        return `rgba(255, 193, 7, ${alpha})`; // 노란색
+    } else {
+        return `rgba(220, 53, 69, ${alpha})`; // 빨간색
+    }
+}
+
 // 메인 페이지로 이동
 function goToMainPage() {
-    window.location.href = 'index.html';
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    window.location.href = `index.html?lang=${lang}`;
 }
 
 // 이벤트 리스너

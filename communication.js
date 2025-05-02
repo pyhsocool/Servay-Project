@@ -92,8 +92,200 @@ const questions = [
     }
 ];
 
+// 영어 질문 데이터
+const questionsEN = [
+    {
+        question: "I can express my thoughts and ideas clearly.",
+        options: [
+            { text: "I always express myself clearly", score: 4 },
+            { text: "I mostly express myself clearly", score: 3 },
+            { text: "I sometimes find it difficult", score: 2 },
+            { text: "I often struggle to express myself", score: 1 }
+        ]
+    },
+    {
+        question: "I listen attentively to others' opinions and try to understand them.",
+        options: [
+            { text: "I always listen attentively", score: 4 },
+            { text: "I mostly listen attentively", score: 3 },
+            { text: "I sometimes find it difficult to listen", score: 2 },
+            { text: "I rarely listen to others' opinions", score: 1 }
+        ]
+    },
+    {
+        question: "I can ask appropriate questions to develop a conversation.",
+        options: [
+            { text: "I always ask appropriate questions to lead the conversation", score: 4 },
+            { text: "I often ask good questions", score: 3 },
+            { text: "I sometimes ask questions", score: 2 },
+            { text: "I rarely ask questions", score: 1 }
+        ]
+    },
+    {
+        question: "I use nonverbal expressions (facial expressions, gestures) effectively.",
+        options: [
+            { text: "I use facial expressions and gestures very effectively", score: 4 },
+            { text: "I use appropriate nonverbal expressions", score: 3 },
+            { text: "My facial expressions or gestures are unnatural", score: 2 },
+            { text: "I hardly use nonverbal expressions", score: 1 }
+        ]
+    },
+    {
+        question: "I communicate respectfully and empathetically with others.",
+        options: [
+            { text: "I always consider others' perspectives", score: 4 },
+            { text: "I mostly consider others' feelings", score: 3 },
+            { text: "I sometimes don't consider others' feelings", score: 2 },
+            { text: "I mostly talk from my perspective", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate effectively in conflict situations.",
+        options: [
+            { text: "I communicate effectively in conflict situations", score: 4 },
+            { text: "I mostly manage conflicts appropriately", score: 3 },
+            { text: "It's difficult for me to control my emotions in conflict situations", score: 2 },
+            { text: "I tend to avoid conflict", score: 1 }
+        ]
+    },
+    {
+        question: "I can convey complex information to others in a way they can understand easily.",
+        options: [
+            { text: "I always convey information clearly and easily", score: 4 },
+            { text: "I mostly explain in a way others can understand", score: 3 },
+            { text: "I sometimes find it difficult to convey complex information", score: 2 },
+            { text: "I use too many specialized terms, making communication difficult", score: 1 }
+        ]
+    },
+    {
+        question: "I can adjust my communication style to suit various situations and people.",
+        options: [
+            { text: "I communicate perfectly with various situations and people", score: 4 },
+            { text: "I mostly adjust to situations", score: 3 },
+            { text: "I communicate well only with specific people", score: 2 },
+            { text: "I communicate only in one way", score: 1 }
+        ]
+    },
+    {
+        question: "I welcome and use feedback positively to improve.",
+        options: [
+            { text: "I always welcome and reflect feedback positively", score: 4 },
+            { text: "I mostly accept feedback", score: 3 },
+            { text: "I sometimes become defensive in response to feedback", score: 2 },
+            { text: "I reject feedback negatively", score: 1 }
+        ]
+    },
+    {
+        question: "I can speak confidently in presentation or public speaking situations.",
+        options: [
+            { text: "I have very high confidence in presentation situations", score: 4 },
+            { text: "I mostly perform well in presentations", score: 3 },
+            { text: "I get nervous and anxious in presentations", score: 2 },
+            { text: "I try to avoid presentations if possible", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo expresar mis pensamientos e ideas con claridad.",
+        options: [
+            { text: "Siempre me expreso con claridad", score: 4 },
+            { text: "La mayoría de las veces me expreso con claridad", score: 3 },
+            { text: "A veces me resulta difícil", score: 2 },
+            { text: "A menudo tengo dificultades para expresarme", score: 1 }
+        ]
+    },
+    {
+        question: "Escucho atentamente las opiniones de los demás y trato de entenderlas.",
+        options: [
+            { text: "Siempre escucho atentamente", score: 4 },
+            { text: "La mayoría de las veces escucho atentamente", score: 3 },
+            { text: "A veces es difícil escuchar", score: 2 },
+            { text: "Rara vez escucho las opiniones de los demás", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo preguntar preguntas adecuadas para desarrollar una conversación.",
+        options: [
+            { text: "Siempre pregunto preguntas adecuadas para liderar la conversación", score: 4 },
+            { text: "A menudo pregunto buenas preguntas", score: 3 },
+            { text: "A veces pregunto", score: 2 },
+            { text: "Rara vez pregunto", score: 1 }
+        ]
+    },
+    {
+        question: "Uso expresiones no verbales (expresiones faciales, gestos) de manera efectiva.",
+        options: [
+            { text: "Uso expresiones faciales y gestos muy efectivamente", score: 4 },
+            { text: "Uso expresiones no verbales adecuadas", score: 3 },
+            { text: "Mis expresiones faciales o gestos son poco naturales", score: 2 },
+            { text: "Rara vez uso expresiones no verbales", score: 1 }
+        ]
+    },
+    {
+        question: "Comunico respetuosamente y empatéticamente con los demás.",
+        options: [
+            { text: "Siempre considero las perspectivas de los demás", score: 4 },
+            { text: "La mayoría de las veces considero los sentimientos de los demás", score: 3 },
+            { text: "A veces no considero los sentimientos de los demás", score: 2 },
+            { text: "La mayoría de las veces hablo desde mi perspectiva", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicarse efectivamente en situaciones de conflicto.",
+        options: [
+            { text: "Puedo comunicarse efectivamente en situaciones de conflicto", score: 4 },
+            { text: "La mayoría de las veces manejo el conflicto adecuadamente", score: 3 },
+            { text: "Es difícil para mí controlar mis emociones en situaciones de conflicto", score: 2 },
+            { text: "Tiendo a evitar el conflicto", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo transmitir información compleja a otros de manera que puedan entenderla fácilmente.",
+        options: [
+            { text: "Siempre transmito información de manera clara y fácil", score: 4 },
+            { text: "La mayoría de las veces la explico de manera que otros puedan entender", score: 3 },
+            { text: "A veces es difícil transmitir información compleja", score: 2 },
+            { text: "Uso demasiados términos técnicos, lo que dificulta la comunicación", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo ajustar mi estilo de comunicación para adaptarse a diversas situaciones y personas.",
+        options: [
+            { text: "Comunico perfectamente con diversas situaciones y personas", score: 4 },
+            { text: "La mayoría de las veces lo ajusto", score: 3 },
+            { text: "Comunico bien solo con personas específicas", score: 2 },
+            { text: "Comunico solo de una manera", score: 1 }
+        ]
+    },
+    {
+        question: "Bienvenido y uso el feedback positivamente para mejorar.",
+        options: [
+            { text: "Siempre doy la bienvenida y reflejo el feedback positivamente", score: 4 },
+            { text: "La mayoría de las veces acepto el feedback", score: 3 },
+            { text: "A veces me vuelvo defensivo en respuesta al feedback", score: 2 },
+            { text: "Rechazo el feedback negativamente", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo hablar con confianza en situaciones de presentación o discurso público.",
+        options: [
+            { text: "Tengo mucha confianza en situaciones de presentación", score: 4 },
+            { text: "La mayoría de las veces me desempeño bien en presentaciones", score: 3 },
+            { text: "Tengo nervios y ansiedad en presentaciones", score: 2 },
+            { text: "Intento evitar presentaciones si es posible", score: 1 }
+        ]
+    }
+];
+
+// 현재 활성화된 질문 데이터
+let activeQuestions = questions;
+
 // 결과 메시지 데이터
 const resultMessages = [
+    // 한국어 결과 메시지
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +308,57 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to improve your communication skills. Practice active listening and clear expression, seek feedback, and continuously improve your communication style."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Intermediate Level: You have basic communication skills. Develop your emotional awareness and empathy, and practice communication strategies in various situations."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Advanced Level: You have good communication skills. Develop negotiation techniques and conflict resolution skills in complex situations."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Expert Level: You have excellent communication skills. Help others improve their communication, and act as a mediator to promote communication among different groups."
+    }
+];
+
+// 스페인어 결과 메시지
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas mejorar tus habilidades de comunicación. Practica la escucha activa y la expresión clara, busca retroalimentación y mejora continuamente tu estilo de comunicación."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Intermedio: Tienes habilidades básicas de comunicación. Desarrolla tu conocimiento y empatía emocional, y practica estrategias de comunicación en diversas situaciones."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Avanzado: Tienes habilidades buenas de comunicación. Desarrolla técnicas de negociación y habilidades de resolución de conflictos en situaciones complejas."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Experto: Tienes excelentes habilidades de comunicación. Ayuda a otros a mejorar su comunicación y actúa como mediador para promover la comunicación entre diferentes grupos."
+    }
+];
+
+// 현재 활성화된 결과 메시지
+let activeResultMessages = resultMessages;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -134,16 +377,46 @@ const backToMainBtn = document.getElementById('back-to-main-btn');
 
 // 초기화
 function init() {
+    // 언어 설정 확인
+    checkLanguage();
+    
     currentQuestionIndex = 0;
-    answers = new Array(questions.length).fill(null);
+    answers = new Array(activeQuestions.length).fill(null);
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
 }
 
+// 언어 설정 확인 및 적용
+function checkLanguage() {
+    // URL 파라미터에서 언어 정보 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    
+    // localStorage에 저장된 언어 정보 확인
+    let savedLanguage = localStorage.getItem('selectedLanguage');
+    
+    // URL 파라미터에 언어 정보가 있으면 우선 사용하고 localStorage에 저장
+    if (urlLang) {
+        localStorage.setItem('selectedLanguage', urlLang);
+        savedLanguage = urlLang;
+    }
+    
+    if (savedLanguage === 'en') {
+        activeQuestions = questionsEN;
+        activeResultMessages = resultMessagesEN;
+    } else if (savedLanguage === 'es') {
+        activeQuestions = questionsES;
+        activeResultMessages = resultMessagesES;
+    } else {
+        activeQuestions = questions;
+        activeResultMessages = resultMessages;
+    }
+}
+
 // 질문 표시
 function showQuestion(index) {
-    const question = questions[index];
+    const question = activeQuestions[index];
     
     let optionsHTML = '';
     question.options.forEach((option, i) => {
@@ -180,7 +453,7 @@ function showQuestion(index) {
 function updateButtonsState() {
     prevBtn.disabled = currentQuestionIndex === 0;
     
-    const isLastQuestion = currentQuestionIndex === questions.length - 1;
+    const isLastQuestion = currentQuestionIndex === activeQuestions.length - 1;
     nextBtn.style.display = isLastQuestion ? 'none' : 'block';
     submitBtn.style.display = isLastQuestion ? 'block' : 'none';
 }
@@ -195,7 +468,7 @@ function goToPreviousQuestion() {
 
 // 다음 질문으로 이동
 function goToNextQuestion() {
-    if (currentQuestionIndex < questions.length - 1) {
+    if (currentQuestionIndex < activeQuestions.length - 1) {
         currentQuestionIndex++;
         showQuestion(currentQuestionIndex);
     }
@@ -207,7 +480,7 @@ function calculateScore() {
     
     answers.forEach((answerIndex, questionIndex) => {
         if (answerIndex !== null) {
-            totalScore += questions[questionIndex].options[answerIndex].score;
+            totalScore += activeQuestions[questionIndex].options[answerIndex].score;
         }
     });
     
@@ -216,7 +489,7 @@ function calculateScore() {
 
 // 결과 메시지 가져오기
 function getResultMessage(score) {
-    for (const result of resultMessages) {
+    for (const result of activeResultMessages) {
         if (score >= result.minScore && score <= result.maxScore) {
             return result.message;
         }
@@ -229,7 +502,9 @@ function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
     
-    scoreDisplay.textContent = `총점: ${score}점`;
+    // 언어에 따른 점수 표시
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
     resultMessageElement.textContent = message;
     
     surveyContainer.style.display = 'none';
@@ -238,15 +513,24 @@ function showResult() {
 
 // 메인 페이지로 이동
 function goToMainPage() {
-    window.location.href = 'index.html';
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    window.location.href = `index.html?lang=${lang}`;
 }
 
-// 이벤트 리스너
-prevBtn.addEventListener('click', goToPreviousQuestion);
-nextBtn.addEventListener('click', goToNextQuestion);
-submitBtn.addEventListener('click', showResult);
-restartBtn.addEventListener('click', init);
-backToMainBtn.addEventListener('click', goToMainPage);
-
-// 페이지 로드 시 초기화
-init(); 
+// 페이지 로드 시
+document.addEventListener('DOMContentLoaded', function() {
+    // 메인 JS에서 정의한 언어 설정 적용 함수 호출
+    if (typeof applyStoredLanguageToPage === 'function') {
+        applyStoredLanguageToPage();
+    }
+    
+    // 초기화
+    init();
+    
+    // 이벤트 리스너
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+}); 

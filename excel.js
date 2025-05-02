@@ -1,5 +1,5 @@
-// 설문 질문 데이터
-const questions = [
+// 한국어 설문 질문 데이터
+const questionsKO = [
     {
         question: "데이터 필터 기능을 사용할 수 있나요?",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
-// 결과 메시지 데이터
-const resultMessages = [
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "Can you use the data filter function?",
+        options: [
+            { text: "Can freely use including advanced filters", score: 4 },
+            { text: "Can only use basic filters", score: 3 },
+            { text: "Have seen it but can't use it", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "Do you understand the differences between cell reference methods (relative/absolute/mixed)?",
+        options: [
+            { text: "Perfectly understand and use appropriately", score: 4 },
+            { text: "Roughly know the meaning", score: 3 },
+            { text: "Have heard of it", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "Can you utilize pivot tables?",
+        options: [
+            { text: "Can use advanced pivot tables", score: 4 },
+            { text: "Can only use basic pivot tables", score: 3 },
+            { text: "Only know the concept", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "Can you use conditional formatting?",
+        options: [
+            { text: "Can freely use including complex rules", score: 4 },
+            { text: "Can only use simple conditional formatting", score: 3 },
+            { text: "Have seen the feature but never used it", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "How proficient are you with Excel functions?",
+        options: [
+            { text: "Can write complex nested functions", score: 4 },
+            { text: "Can use basic functions (SUM, AVERAGE, etc.)", score: 3 },
+            { text: "Only know what functions mean but can't write them", score: 2 },
+            { text: "Can't use at all", score: 1 }
+        ]
+    },
+    {
+        question: "Can you utilize macros (VBA)?",
+        options: [
+            { text: "Can write code directly", score: 4 },
+            { text: "Can create simple macros using the recorder", score: 3 },
+            { text: "Only know the concept of macros", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "Can you use data validation features?",
+        options: [
+            { text: "Can set complex rules", score: 4 },
+            { text: "Can only set simple validations", score: 3 },
+            { text: "Have heard of the feature but can't use it", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "How would you rate your chart creation skills?",
+        options: [
+            { text: "Can create complex custom charts", score: 4 },
+            { text: "Can use basic chart types", score: 3 },
+            { text: "Can only create simple charts", score: 2 },
+            { text: "Can't create charts", score: 1 }
+        ]
+    },
+    {
+        question: "Can you use data analysis tools (Analysis ToolPak)?",
+        options: [
+            { text: "Can skillfully use various analysis tools", score: 4 },
+            { text: "Can only use basic analysis tools", score: 3 },
+            { text: "Know they exist but can't use them", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    },
+    {
+        question: "Can you connect and consolidate data between Excel files?",
+        options: [
+            { text: "Can connect complex external data", score: 4 },
+            { text: "Can only connect simple files", score: 3 },
+            { text: "Know how but never done it in practice", score: 2 },
+            { text: "Don't know at all", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "¿Puede utilizar la función de filtro de datos?",
+        options: [
+            { text: "Puedo usar libremente incluso filtros avanzados", score: 4 },
+            { text: "Solo puedo usar filtros básicos", score: 3 },
+            { text: "Lo he visto pero no puedo usarlo", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Entiende las diferencias entre los métodos de referencia de celda (relativa/absoluta/mixta)?",
+        options: [
+            { text: "Entiendo perfectamente y uso apropiadamente", score: 4 },
+            { text: "Conozco aproximadamente el significado", score: 3 },
+            { text: "He oído hablar de ello", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Puede utilizar tablas dinámicas?",
+        options: [
+            { text: "Puedo usar tablas dinámicas avanzadas", score: 4 },
+            { text: "Solo puedo usar tablas dinámicas básicas", score: 3 },
+            { text: "Solo conozco el concepto", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Puede usar el formato condicional?",
+        options: [
+            { text: "Puedo usar libremente incluso reglas complejas", score: 4 },
+            { text: "Solo puedo usar formato condicional simple", score: 3 },
+            { text: "He visto la función pero nunca la he usado", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Qué nivel de conocimiento tiene con las funciones de Excel?",
+        options: [
+            { text: "Puedo escribir funciones anidadas complejas", score: 4 },
+            { text: "Puedo usar funciones básicas (SUMA, PROMEDIO, etc.)", score: 3 },
+            { text: "Solo sé lo que significan las funciones pero no puedo escribirlas", score: 2 },
+            { text: "No puedo usarlas en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Puede utilizar macros (VBA)?",
+        options: [
+            { text: "Puedo escribir código directamente", score: 4 },
+            { text: "Puedo crear macros simples usando la grabadora", score: 3 },
+            { text: "Solo conozco el concepto de macros", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Puede usar funciones de validación de datos?",
+        options: [
+            { text: "Puedo establecer reglas complejas", score: 4 },
+            { text: "Solo puedo establecer validaciones simples", score: 3 },
+            { text: "He oído de la función pero no puedo usarla", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Cómo calificaría sus habilidades de creación de gráficos?",
+        options: [
+            { text: "Puedo crear gráficos personalizados complejos", score: 4 },
+            { text: "Puedo usar tipos de gráficos básicos", score: 3 },
+            { text: "Solo puedo crear gráficos simples", score: 2 },
+            { text: "No puedo crear gráficos", score: 1 }
+        ]
+    },
+    {
+        question: "¿Puede usar herramientas de análisis de datos?",
+        options: [
+            { text: "Puedo usar hábilmente varias herramientas de análisis", score: 4 },
+            { text: "Solo puedo usar herramientas de análisis básicas", score: 3 },
+            { text: "Sé que existen pero no puedo usarlas", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    },
+    {
+        question: "¿Puede conectar y consolidar datos entre archivos de Excel?",
+        options: [
+            { text: "Puedo conectar datos externos complejos", score: 4 },
+            { text: "Solo puedo conectar archivos simples", score: 3 },
+            { text: "Sé cómo hacerlo pero nunca lo he hecho en la práctica", score: 2 },
+            { text: "No lo conozco en absoluto", score: 1 }
+        ]
+    }
+];
+
+// 한국어 결과 메시지 데이터
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,58 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to understand the basic functions of Excel. It is recommended to learn basic functions first."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You understand the basic functions of Excel, but need to learn advanced functions. Try to learn more about frequently used functions such as filters and formulas."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You can handle Excel skillfully. Learn pivot tables, advanced functions, etc. to improve your skills."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You can use Excel professionally. You can reach an expert level by learning more advanced functions such as macros and advanced data analysis."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesita comprender las funciones básicas de Excel. Se recomienda aprender primero las funciones básicas."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Comprende las funciones básicas de Excel, pero necesita aprender funciones avanzadas. Intente aprender más sobre funciones de uso frecuente como filtros y fórmulas."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Puede manejar Excel con habilidad. Aprenda tablas dinámicas, funciones avanzadas, etc. para mejorar sus habilidades."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Puede usar Excel profesionalmente. Puede alcanzar un nivel experto aprendiendo funciones más avanzadas como macros y análisis de datos avanzados."
+    }
+];
+
+// 현재 사용 중인 언어 데이터
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -131,6 +371,32 @@ const scoreDisplay = document.getElementById('score-display');
 const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
+
+// 언어에 따라 설문 데이터 업데이트
+function updateSurveyLanguage(lang) {
+    if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    } else {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    }
+    
+    // 현재 보고 있는 질문 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    }
+    
+    // 결과 창이 표시 중이라면 결과도 업데이트
+    if (resultContainer.style.display !== 'none') {
+        const score = calculateScore();
+        scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
+        resultMessageElement.textContent = getResultMessage(score);
+    }
+}
 
 // 초기화
 function init() {
@@ -229,7 +495,9 @@ function showResult() {
     const score = calculateScore();
     const message = getResultMessage(score);
     
-    scoreDisplay.textContent = `총점: ${score}점`;
+    // 언어에 따른 점수 표시
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
     resultMessageElement.textContent = message;
     
     surveyContainer.style.display = 'none';
@@ -238,15 +506,42 @@ function showResult() {
 
 // 메인 페이지로 이동
 function goToMainPage() {
-    window.location.href = 'index.html';
+    const lang = localStorage.getItem('selectedLanguage') || 'ko';
+    window.location.href = `index.html?lang=${lang}`;
 }
 
-// 이벤트 리스너
-prevBtn.addEventListener('click', goToPreviousQuestion);
-nextBtn.addEventListener('click', goToNextQuestion);
-submitBtn.addEventListener('click', showResult);
-restartBtn.addEventListener('click', init);
-backToMainBtn.addEventListener('click', goToMainPage);
-
-// 앱 초기화
-init(); 
+// 페이지 로드 시 초기화
+document.addEventListener('DOMContentLoaded', function() {
+    // URL 파라미터에서 언어 정보 가져오기
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    
+    // localStorage에 저장된 언어 정보 확인
+    let savedLanguage = localStorage.getItem('selectedLanguage');
+    
+    // URL 파라미터에 언어 정보가 있으면 우선 사용하고 localStorage에 저장
+    if (urlLang) {
+        localStorage.setItem('selectedLanguage', urlLang);
+        savedLanguage = urlLang;
+    }
+    
+    // 언어에 따라 설문 데이터 업데이트
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+    
+    // 공통 언어 설정 적용
+    if (typeof applyStoredLanguageToPage === 'function') {
+        applyStoredLanguageToPage();
+    }
+    
+    // 초기화
+    init();
+    
+    // 이벤트 리스너
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+}); 

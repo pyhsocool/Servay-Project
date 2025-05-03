@@ -1,5 +1,5 @@
-// 설문 질문 데이터
-const questions = [
+// 한국어 설문 질문 데이터
+const questionsKO = [
     {
         question: "마케팅의 기본 개념과 원칙을 이해하고 있다.",
         options: [
@@ -92,29 +92,533 @@ const questions = [
     }
 ];
 
-// 결과 메시지 데이터
-const resultMessages = [
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I understand the basic concepts and principles of marketing.",
+        options: [
+            { text: "I have experience planning and executing marketing projects", score: 4 },
+            { text: "I have applied marketing concepts in my work", score: 3 },
+            { text: "I have heard about basic marketing concepts", score: 2 },
+            { text: "I have little knowledge of marketing concepts", score: 1 }
+        ]
+    },
+    {
+        question: "I know how to define and segment target markets.",
+        options: [
+            { text: "I have developed successful marketing strategies through customer segmentation", score: 4 },
+            { text: "I understand customer segmentation methods and have applied them", score: 3 },
+            { text: "I know the importance of targeting but have never done it", score: 2 },
+            { text: "I don't understand customer segmentation concepts", score: 1 }
+        ]
+    },
+    {
+        question: "I understand the marketing mix concept (4Ps: Product, Price, Place, Promotion).",
+        options: [
+            { text: "I have developed and implemented strategies using the marketing mix", score: 4 },
+            { text: "I understand the marketing mix concept and have used it for analysis", score: 3 },
+            { text: "I've heard of the marketing mix but don't understand it deeply", score: 2 },
+            { text: "I've never heard of the marketing mix", score: 1 }
+        ]
+    },
+    {
+        question: "I understand the importance of branding and brand value.",
+        options: [
+            { text: "I have developed and implemented brand strategies", score: 4 },
+            { text: "I understand branding concepts and have analyzed brands", score: 3 },
+            { text: "I know the importance of branding but haven't applied it", score: 2 },
+            { text: "I have limited understanding of branding concepts", score: 1 }
+        ]
+    },
+    {
+        question: "I know the characteristics and uses of digital marketing channels (social media, email, search, etc.).",
+        options: [
+            { text: "I have managed integrated marketing campaigns across multiple digital channels", score: 4 },
+            { text: "I have experience using several digital marketing channels", score: 3 },
+            { text: "I know the basics of digital marketing channels", score: 2 },
+            { text: "I have little knowledge of digital marketing channels", score: 1 }
+        ]
+    },
+    {
+        question: "I understand the importance of market research and data analysis.",
+        options: [
+            { text: "I have designed market research and used data analysis for decision making", score: 4 },
+            { text: "I know basic market research methods and have done simple analyses", score: 3 },
+            { text: "I understand the importance of market research but haven't done it", score: 2 },
+            { text: "I have little knowledge of market research and data analysis", score: 1 }
+        ]
+    },
+    {
+        question: "I understand consumer behavior principles and the purchase decision process.",
+        options: [
+            { text: "I have successfully applied consumer behavior analysis to marketing strategies", score: 4 },
+            { text: "I understand consumer behavior principles and have done basic analysis", score: 3 },
+            { text: "I only know basic concepts of consumer behavior", score: 2 },
+            { text: "I have little knowledge of consumer behavior principles", score: 1 }
+        ]
+    },
+    {
+        question: "I know how to measure marketing KPIs (Key Performance Indicators) and ROI (Return on Investment).",
+        options: [
+            { text: "I have set marketing KPIs and measured ROI to improve performance", score: 4 },
+            { text: "I understand basic marketing KPIs and have measured them", score: 3 },
+            { text: "I know the concepts of KPIs and ROI but haven't measured them", score: 2 },
+            { text: "I have little knowledge of marketing KPIs and ROI", score: 1 }
+        ]
+    },
+    {
+        question: "I understand content marketing principles and effective content strategies.",
+        options: [
+            { text: "I have developed and successfully implemented content marketing strategies", score: 4 },
+            { text: "I understand content marketing and have participated in content creation", score: 3 },
+            { text: "I only know basic concepts of content marketing", score: 2 },
+            { text: "I have little knowledge of content marketing", score: 1 }
+        ]
+    },
+    {
+        question: "I have knowledge of marketing trends and new marketing technologies and platforms.",
+        options: [
+            { text: "I continuously learn about latest marketing trends and apply them", score: 4 },
+            { text: "I know major marketing trends and have tried some new technologies", score: 3 },
+            { text: "I have heard about some marketing trends", score: 2 },
+            { text: "I have little knowledge of current marketing trends", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Entiendo los conceptos y principios básicos del marketing.",
+        options: [
+            { text: "Tengo experiencia planificando y ejecutando proyectos de marketing", score: 4 },
+            { text: "He aplicado conceptos de marketing en mi trabajo", score: 3 },
+            { text: "He oído hablar sobre conceptos básicos de marketing", score: 2 },
+            { text: "Tengo poco conocimiento de conceptos de marketing", score: 1 }
+        ]
+    },
+    {
+        question: "Sé cómo definir y segmentar mercados objetivo.",
+        options: [
+            { text: "He desarrollado estrategias de marketing exitosas mediante segmentación de clientes", score: 4 },
+            { text: "Entiendo métodos de segmentación de clientes y los he aplicado", score: 3 },
+            { text: "Conozco la importancia de la segmentación pero nunca la he realizado", score: 2 },
+            { text: "No entiendo los conceptos de segmentación de clientes", score: 1 }
+        ]
+    },
+    {
+        question: "Entiendo el concepto de marketing mix (4Ps: Producto, Precio, Plaza, Promoción).",
+        options: [
+            { text: "He desarrollado e implementado estrategias usando el marketing mix", score: 4 },
+            { text: "Entiendo el concepto de marketing mix y lo he usado para análisis", score: 3 },
+            { text: "He oído del marketing mix pero no lo entiendo profundamente", score: 2 },
+            { text: "Nunca he oído hablar del marketing mix", score: 1 }
+        ]
+    },
+    {
+        question: "Entiendo la importancia del branding y el valor de marca.",
+        options: [
+            { text: "He desarrollado e implementado estrategias de marca", score: 4 },
+            { text: "Entiendo conceptos de branding y he analizado marcas", score: 3 },
+            { text: "Conozco la importancia del branding pero no lo he aplicado", score: 2 },
+            { text: "Tengo una comprensión limitada de los conceptos de branding", score: 1 }
+        ]
+    },
+    {
+        question: "Conozco las características y usos de los canales de marketing digital (redes sociales, email, búsqueda, etc.).",
+        options: [
+            { text: "He gestionado campañas de marketing integradas en múltiples canales digitales", score: 4 },
+            { text: "Tengo experiencia usando varios canales de marketing digital", score: 3 },
+            { text: "Conozco lo básico de los canales de marketing digital", score: 2 },
+            { text: "Tengo poco conocimiento de canales de marketing digital", score: 1 }
+        ]
+    },
+    {
+        question: "Entiendo la importancia de la investigación de mercado y el análisis de datos.",
+        options: [
+            { text: "He diseñado investigaciones de mercado y usado análisis de datos para tomar decisiones", score: 4 },
+            { text: "Conozco métodos básicos de investigación de mercado y he realizado análisis simples", score: 3 },
+            { text: "Entiendo la importancia de la investigación de mercado pero no la he realizado", score: 2 },
+            { text: "Tengo poco conocimiento de investigación de mercado y análisis de datos", score: 1 }
+        ]
+    },
+    {
+        question: "Entiendo los principios de comportamiento del consumidor y el proceso de decisión de compra.",
+        options: [
+            { text: "He aplicado con éxito análisis de comportamiento del consumidor a estrategias de marketing", score: 4 },
+            { text: "Entiendo principios de comportamiento del consumidor y he realizado análisis básicos", score: 3 },
+            { text: "Solo conozco conceptos básicos de comportamiento del consumidor", score: 2 },
+            { text: "Tengo poco conocimiento de principios de comportamiento del consumidor", score: 1 }
+        ]
+    },
+    {
+        question: "Sé cómo medir KPIs de marketing (Indicadores Clave de Rendimiento) y ROI (Retorno de Inversión).",
+        options: [
+            { text: "He establecido KPIs de marketing y medido ROI para mejorar el rendimiento", score: 4 },
+            { text: "Entiendo KPIs básicos de marketing y los he medido", score: 3 },
+            { text: "Conozco los conceptos de KPIs y ROI pero no los he medido", score: 2 },
+            { text: "Tengo poco conocimiento de KPIs de marketing y ROI", score: 1 }
+        ]
+    },
+    {
+        question: "Entiendo los principios de marketing de contenidos y estrategias de contenido efectivas.",
+        options: [
+            { text: "He desarrollado e implementado con éxito estrategias de marketing de contenidos", score: 4 },
+            { text: "Entiendo el marketing de contenidos y he participado en creación de contenido", score: 3 },
+            { text: "Solo conozco conceptos básicos de marketing de contenidos", score: 2 },
+            { text: "Tengo poco conocimiento de marketing de contenidos", score: 1 }
+        ]
+    },
+    {
+        question: "Tengo conocimiento de tendencias de marketing y nuevas tecnologías y plataformas de marketing.",
+        options: [
+            { text: "Aprendo continuamente sobre las últimas tendencias de marketing y las aplico", score: 4 },
+            { text: "Conozco las principales tendencias de marketing y he probado algunas nuevas tecnologías", score: 3 },
+            { text: "He oído hablar de algunas tendencias de marketing", score: 2 },
+            { text: "Tengo poco conocimiento de tendencias actuales de marketing", score: 1 }
+        ]
+    }
+];
+
+// 한국어 결과 메시지 데이터
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
-        message: "초보 수준: 마케팅의 기본 개념에 대한 이해를 높일 필요가 있습니다. 마케팅 기초 서적이나 온라인 강의를 통해 핵심 개념부터 학습해보세요."
+        message: "초보 수준: 마케팅의 기본 개념에 대한 이해가 필요합니다. 마케팅 기초 개념과 용어를 학습하는 것이 좋습니다.",
+        detailedAnalysis: "현재는 마케팅의 기본 개념에 대한 이해가 필요한 단계입니다. 마케팅 기초, 주요 용어, 기본 원칙 등을 학습하면 마케팅 활동에 대한 이해도가 크게 향상될 것입니다.",
+        strengths: [
+            "기본적인 마케팅 개념 인지",
+            "마케팅에 대한 관심과 학습 의지"
+        ],
+        weaknesses: [
+            "마케팅 전략 수립 경험 부족",
+            "마케팅 도구 활용 능력 제한",
+            "데이터 기반 의사결정 능력 미흡"
+        ],
+        recommendations: [
+            { title: "마케팅 기초 이론", type: "온라인 강좌", link: "https://www.coursera.org/learn/marketing-fundamentals" },
+            { title: "처음 시작하는 마케팅", type: "도서", link: "https://www.yes24.com/Product/Goods/102387413" },
+            { title: "마케팅 기초 용어 정리", type: "유튜브 채널", link: "https://www.youtube.com/c/MarketingBasics" }
+        ],
+        careerPaths: [
+            "마케팅 어시스턴트",
+            "소셜 미디어 어시스턴트",
+            "마케팅 인턴"
+        ]
     },
     {
         minScore: 21,
         maxScore: 30,
-        message: "기초 수준: 마케팅의 기본 개념은 이해하고 있지만, 실무 적용 경험을 쌓을 필요가 있습니다. 소규모 마케팅 프로젝트에 참여하거나 디지털 마케팅 채널을 직접 활용해보세요."
+        message: "기초 수준: 기본적인 마케팅 개념을 이해하고 있지만, 실무 적용 능력을 향상시킬 필요가 있습니다. 디지털 마케팅 도구와 분석 방법을 학습해보세요.",
+        detailedAnalysis: "마케팅의 기본 개념을 이해하고 있지만 실무 적용 능력을 향상시킬 필요가 있습니다. 디지털 마케팅 도구 활용, 기본적인 마케팅 분석, 소셜 미디어 마케팅 등에 대한 학습이 도움이 될 것입니다.",
+        strengths: [
+            "기본적인 마케팅 개념 이해",
+            "소셜 미디어 플랫폼 활용 가능",
+            "기초적인 콘텐츠 제작 능력"
+        ],
+        weaknesses: [
+            "마케팅 성과 측정 및 분석 능력 부족",
+            "통합 마케팅 전략 수립 경험 미흡",
+            "고급 마케팅 도구 활용 제한"
+        ],
+        recommendations: [
+            { title: "실전 디지털 마케팅", type: "온라인 강좌", link: "https://www.udemy.com/course/complete-digital-marketing-course" },
+            { title: "마케팅 분석 기초", type: "도서", link: "https://www.yes24.com/Product/Goods/90175118" },
+            { title: "소셜 미디어 마케팅 전략", type: "유튜브 채널", link: "https://www.youtube.com/c/SocialMediaExaminer" }
+        ],
+        careerPaths: [
+            "마케팅 코디네이터",
+            "소셜 미디어 스페셜리스트",
+            "콘텐츠 마케터",
+            "이메일 마케팅 담당자"
+        ]
     },
     {
         minScore: 31,
         maxScore: 35,
-        message: "중급 수준: 마케팅 개념을 이해하고 기본적인 실무 경험을 갖추고 있습니다. 더 다양한 마케팅 채널과 전략을 경험하고 데이터 분석 능력을 키워보세요."
+        message: "중급 수준: 효과적인 마케팅 전략을 수립하고 실행할 수 있는 능력을 갖추고 있습니다. 데이터 분석과 고객 인사이트 도출 능력을 더욱 발전시키세요.",
+        detailedAnalysis: "효과적인 마케팅 전략을 수립하고 실행할 수 있는 능력을 갖추고 있습니다. 마케팅 채널 관리, 캠페인 기획 및 실행, 기본적인 성과 측정 등이 가능하지만, 데이터 분석과 고객 인사이트 도출 능력을 더욱 발전시킬 필요가 있습니다.",
+        strengths: [
+            "마케팅 캠페인 기획 및 실행 능력",
+            "다양한 마케팅 채널 활용 능력",
+            "기본적인 마케팅 성과 측정 가능",
+            "콘텐츠 마케팅 전략 수립 능력"
+        ],
+        weaknesses: [
+            "고급 데이터 분석 기술 활용 제한",
+            "고객 여정 맵핑 및 페르소나 개발 심화 필요",
+            "통합 마케팅 커뮤니케이션 전략 보완 필요"
+        ],
+        recommendations: [
+            { title: "마케팅 데이터 분석 마스터", type: "온라인 강좌", link: "https://www.coursera.org/learn/marketing-analytics" },
+            { title: "고객 중심 마케팅 전략", type: "도서", link: "https://www.yes24.com/Product/Goods/96999515" },
+            { title: "마케팅 전략 및 분석", type: "유튜브 채널", link: "https://www.youtube.com/c/MarketingAnalytics" }
+        ],
+        careerPaths: [
+            "마케팅 매니저",
+            "디지털 마케팅 스페셜리스트",
+            "브랜드 매니저",
+            "마케팅 애널리스트"
+        ]
     },
     {
         minScore: 36,
         maxScore: 40,
-        message: "고급 수준: 마케팅에 대한 깊은 이해와 실무 경험을 갖추고 있습니다. 최신 트렌드를 지속적으로 학습하고 통합적인 마케팅 전략을 수립하는 능력을 더욱 발전시켜보세요."
+        message: "고급 수준: 전문적인 마케팅 역량을 보유하고 있습니다. 최신 마케팅 트렌드를 습득하고 통합적인 마케팅 전략을 개발할 수 있는 능력을 더욱 발전시키세요.",
+        detailedAnalysis: "전문적인 마케팅 역량을 보유하고 있습니다. 마케팅 전략 수립, 데이터 기반 의사결정, 다양한 마케팅 채널 통합 관리 등이 가능하며, 최신 마케팅 트렌드를 습득하고 통합적인 마케팅 전략을 개발할 수 있는 역량을 갖추고 있습니다.",
+        strengths: [
+            "종합적인 마케팅 전략 수립 능력",
+            "마케팅 ROI 측정 및 최적화 능력",
+            "다채널 마케팅 캠페인 관리 역량",
+            "데이터 기반 의사결정 능력"
+        ],
+        weaknesses: [
+            "신기술(AI, VR 등) 활용 마케팅 영역 발전 가능",
+            "국제 마케팅 전략 경험 확장 필요",
+            "리더십 및 팀 관리 역량 개발 필요"
+        ],
+        recommendations: [
+            { title: "디지털 트랜스포메이션과 마케팅", type: "온라인 강좌", link: "https://www.coursera.org/learn/digital-transformation-marketing" },
+            { title: "마케팅 리더십", type: "도서", link: "https://www.yes24.com/Product/Goods/103254585" },
+            { title: "최신 마케팅 트렌드 및 전략", type: "유튜브 채널", link: "https://www.youtube.com/c/MarketingTrends" }
+        ],
+        careerPaths: [
+            "마케팅 디렉터",
+            "마케팅 전략 컨설턴트",
+            "수석 마케팅 매니저",
+            "CMO(Chief Marketing Officer)"
+        ]
     }
 ];
+
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to understand the basic concepts of marketing. It is recommended to learn marketing fundamentals and terminology.",
+        detailedAnalysis: "You are at the stage of understanding basic marketing concepts. Learning marketing fundamentals, key terminology, and basic principles will greatly enhance your understanding of marketing activities.",
+        strengths: [
+            "Basic awareness of marketing concepts",
+            "Interest and willingness to learn about marketing"
+        ],
+        weaknesses: [
+            "Limited experience in developing marketing strategies",
+            "Limited ability to use marketing tools",
+            "Insufficient skills in data-driven decision making"
+        ],
+        recommendations: [
+            { title: "Marketing Fundamentals", type: "Online Course", link: "https://www.coursera.org/learn/marketing-fundamentals" },
+            { title: "Marketing 101", type: "Book", link: "https://www.amazon.com/Marketing-101-Ann-Bastianelli/dp/1118295366" },
+            { title: "Marketing Basics", type: "YouTube Channel", link: "https://www.youtube.com/c/MarketingBasics" }
+        ],
+        careerPaths: [
+            "Marketing Assistant",
+            "Social Media Assistant",
+            "Marketing Intern"
+        ]
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You understand the basic concepts of marketing, but need to improve your practical application skills. Try to learn digital marketing tools and analysis methods.",
+        detailedAnalysis: "You understand the basic concepts of marketing but need to improve your practical application skills. Learning about digital marketing tools, basic marketing analysis, and social media marketing will be helpful.",
+        strengths: [
+            "Understanding of basic marketing concepts",
+            "Ability to use social media platforms",
+            "Basic content creation skills"
+        ],
+        weaknesses: [
+            "Limited ability to measure and analyze marketing performance",
+            "Limited experience in developing integrated marketing strategies",
+            "Limited use of advanced marketing tools"
+        ],
+        recommendations: [
+            { title: "Practical Digital Marketing", type: "Online Course", link: "https://www.udemy.com/course/complete-digital-marketing-course" },
+            { title: "Marketing Analytics Basics", type: "Book", link: "https://www.amazon.com/Marketing-Analytics-Strategic-Techniques-Science/dp/1118373434" },
+            { title: "Social Media Marketing Strategy", type: "YouTube Channel", link: "https://www.youtube.com/c/SocialMediaExaminer" }
+        ],
+        careerPaths: [
+            "Marketing Coordinator",
+            "Social Media Specialist",
+            "Content Marketer",
+            "Email Marketing Specialist"
+        ]
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You have the ability to develop and execute effective marketing strategies. Further develop your data analysis and customer insight skills.",
+        detailedAnalysis: "You have the ability to develop and execute effective marketing strategies. You can manage marketing channels, plan and execute campaigns, and perform basic performance measurement, but you need to further develop your data analysis and customer insight skills.",
+        strengths: [
+            "Ability to plan and execute marketing campaigns",
+            "Ability to use various marketing channels",
+            "Basic marketing performance measurement",
+            "Content marketing strategy development"
+        ],
+        weaknesses: [
+            "Limited use of advanced data analysis techniques",
+            "Need to further develop customer journey mapping and persona development",
+            "Need to improve integrated marketing communication strategies"
+        ],
+        recommendations: [
+            { title: "Marketing Data Analysis Master", type: "Online Course", link: "https://www.coursera.org/learn/marketing-analytics" },
+            { title: "Customer-Centric Marketing Strategy", type: "Book", link: "https://www.amazon.com/Customer-Centricity-Focus-Right-Customers/dp/1613630166" },
+            { title: "Marketing Strategy and Analysis", type: "YouTube Channel", link: "https://www.youtube.com/c/MarketingAnalytics" }
+        ],
+        careerPaths: [
+            "Marketing Manager",
+            "Digital Marketing Specialist",
+            "Brand Manager",
+            "Marketing Analyst"
+        ]
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You have professional marketing capabilities. Further develop your ability to acquire the latest marketing trends and develop integrated marketing strategies.",
+        detailedAnalysis: "You have professional marketing capabilities. You can develop marketing strategies, make data-driven decisions, and manage various marketing channels. You have the ability to acquire the latest marketing trends and develop integrated marketing strategies.",
+        strengths: [
+            "Comprehensive marketing strategy development",
+            "Marketing ROI measurement and optimization",
+            "Multi-channel marketing campaign management",
+            "Data-driven decision making"
+        ],
+        weaknesses: [
+            "Potential to develop marketing with new technologies (AI, VR, etc.)",
+            "Need to expand international marketing strategy experience",
+            "Need to develop leadership and team management skills"
+        ],
+        recommendations: [
+            { title: "Digital Transformation and Marketing", type: "Online Course", link: "https://www.coursera.org/learn/digital-transformation-marketing" },
+            { title: "Marketing Leadership", type: "Book", link: "https://www.amazon.com/Kotler-Marketing-Create-Dominate-Markets/dp/1476777934" },
+            { title: "Latest Marketing Trends and Strategies", type: "YouTube Channel", link: "https://www.youtube.com/c/MarketingTrends" }
+        ],
+        careerPaths: [
+            "Marketing Director",
+            "Marketing Strategy Consultant",
+            "Senior Marketing Manager",
+            "Chief Marketing Officer (CMO)"
+        ]
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesita comprender los conceptos básicos de marketing. Se recomienda aprender fundamentos y terminología de marketing.",
+        detailedAnalysis: "Está en la etapa de comprender los conceptos básicos de marketing. Aprender fundamentos de marketing, terminología clave y principios básicos mejorará enormemente su comprensión de las actividades de marketing.",
+        strengths: [
+            "Conocimiento básico de conceptos de marketing",
+            "Interés y disposición para aprender sobre marketing"
+        ],
+        weaknesses: [
+            "Experiencia limitada en desarrollo de estrategias de marketing",
+            "Capacidad limitada para usar herramientas de marketing",
+            "Habilidades insuficientes en toma de decisiones basadas en datos"
+        ],
+        recommendations: [
+            { title: "Fundamentos de Marketing", type: "Curso en línea", link: "https://www.coursera.org/learn/marketing-fundamentals" },
+            { title: "Marketing 101", type: "Libro", link: "https://www.amazon.es/Marketing-4-0-Philip-Kotler/dp/8416894841" },
+            { title: "Conceptos Básicos de Marketing", type: "Canal de YouTube", link: "https://www.youtube.com/c/MarketingBasicsEspanol" }
+        ],
+        careerPaths: [
+            "Asistente de Marketing",
+            "Asistente de Redes Sociales",
+            "Practicante de Marketing"
+        ]
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Comprende los conceptos básicos de marketing, pero necesita mejorar sus habilidades de aplicación práctica. Intente aprender herramientas de marketing digital y métodos de análisis.",
+        detailedAnalysis: "Comprende los conceptos básicos de marketing pero necesita mejorar sus habilidades de aplicación práctica. Aprender sobre herramientas de marketing digital, análisis básico de marketing y marketing en redes sociales será útil.",
+        strengths: [
+            "Comprensión de conceptos básicos de marketing",
+            "Capacidad para usar plataformas de redes sociales",
+            "Habilidades básicas de creación de contenido"
+        ],
+        weaknesses: [
+            "Capacidad limitada para medir y analizar el rendimiento de marketing",
+            "Experiencia limitada en desarrollo de estrategias integradas de marketing",
+            "Uso limitado de herramientas avanzadas de marketing"
+        ],
+        recommendations: [
+            { title: "Marketing Digital Práctico", type: "Curso en línea", link: "https://www.udemy.com/course/complete-digital-marketing-course" },
+            { title: "Fundamentos de Analítica de Marketing", type: "Libro", link: "https://www.amazon.es/Analítica-Web-medir-triunfar-edición/dp/8441540330" },
+            { title: "Estrategia de Marketing en Redes Sociales", type: "Canal de YouTube", link: "https://www.youtube.com/c/SocialMediaExaminerEspanol" }
+        ],
+        careerPaths: [
+            "Coordinador de Marketing",
+            "Especialista en Redes Sociales",
+            "Creador de Contenido",
+            "Especialista en Email Marketing"
+        ]
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Tiene la capacidad de desarrollar y ejecutar estrategias efectivas de marketing. Desarrolle aún más sus habilidades de análisis de datos e insights de clientes.",
+        detailedAnalysis: "Tiene la capacidad de desarrollar y ejecutar estrategias efectivas de marketing. Puede gestionar canales de marketing, planificar y ejecutar campañas, y realizar mediciones básicas de rendimiento, pero necesita desarrollar aún más sus habilidades de análisis de datos e insights de clientes.",
+        strengths: [
+            "Capacidad para planificar y ejecutar campañas de marketing",
+            "Capacidad para utilizar varios canales de marketing",
+            "Medición básica del rendimiento de marketing",
+            "Desarrollo de estrategia de marketing de contenidos"
+        ],
+        weaknesses: [
+            "Uso limitado de técnicas avanzadas de análisis de datos",
+            "Necesidad de desarrollar más el mapeo del recorrido del cliente y desarrollo de personas",
+            "Necesidad de mejorar estrategias integradas de comunicación de marketing"
+        ],
+        recommendations: [
+            { title: "Master en Análisis de Datos de Marketing", type: "Curso en línea", link: "https://www.coursera.org/learn/marketing-analytics" },
+            { title: "Estrategia de Marketing Centrada en el Cliente", type: "Libro", link: "https://www.amazon.es/Experiencia-cliente-Ignacio-Visiers-Lecanda/dp/8416125066" },
+            { title: "Estrategia y Análisis de Marketing", type: "Canal de YouTube", link: "https://www.youtube.com/c/MarketingAnalyticsEspanol" }
+        ],
+        careerPaths: [
+            "Gerente de Marketing",
+            "Especialista en Marketing Digital",
+            "Gerente de Marca",
+            "Analista de Marketing"
+        ]
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Tiene capacidades profesionales de marketing. Desarrolle aún más su capacidad para adquirir las últimas tendencias de marketing y desarrollar estrategias integradas de marketing.",
+        detailedAnalysis: "Tiene capacidades profesionales de marketing. Puede desarrollar estrategias de marketing, tomar decisiones basadas en datos y gestionar varios canales de marketing. Tiene la capacidad de adquirir las últimas tendencias de marketing y desarrollar estrategias integradas de marketing.",
+        strengths: [
+            "Desarrollo integral de estrategias de marketing",
+            "Medición y optimización de ROI de marketing",
+            "Gestión de campañas de marketing multicanal",
+            "Toma de decisiones basada en datos"
+        ],
+        weaknesses: [
+            "Potencial para desarrollar marketing con nuevas tecnologías (IA, RV, etc.)",
+            "Necesidad de ampliar experiencia en estrategia de marketing internacional",
+            "Necesidad de desarrollar habilidades de liderazgo y gestión de equipos"
+        ],
+        recommendations: [
+            { title: "Transformación Digital y Marketing", type: "Curso en línea", link: "https://www.coursera.org/learn/digital-transformation-marketing" },
+            { title: "Liderazgo en Marketing", type: "Libro", link: "https://www.amazon.es/Marketing-4-0-Philip-Kotler/dp/8416894841" },
+            { title: "Últimas Tendencias y Estrategias de Marketing", type: "Canal de YouTube", link: "https://www.youtube.com/c/MarketingTrendsEspanol" }
+        ],
+        careerPaths: [
+            "Director de Marketing",
+            "Consultor de Estrategia de Marketing",
+            "Gerente Senior de Marketing",
+            "Director de Marketing (CMO)"
+        ]
+    }
+];
+
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
 
 // 전역 변수
 let currentQuestionIndex = 0;
@@ -132,6 +636,31 @@ const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
 
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    } else {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    }
+    
+    // 현재 보고 있는 질문 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    }
+    
+    // 결과 창이 표시 중이라면 결과도 업데이트
+    if (resultContainer.style.display !== 'none') {
+        // 결과 재표시 (언어 변경 반영)
+        showResult();
+    }
+}
+
 // 초기화
 function init() {
     currentQuestionIndex = 0;
@@ -139,6 +668,19 @@ function init() {
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -227,198 +769,71 @@ function getResultMessage(score) {
 // 결과 표시
 function showResult() {
     const score = calculateScore();
-    const message = getResultMessage(score);
-    const category = "마케팅 기초 이해도";
-    
-    // 언어에 따른 점수 표시
     const lang = localStorage.getItem('selectedLanguage') || 'ko';
     
-    // 결론 도출 부분 - 개선된 구조
-    let resultHTML = `
-        <h2>1. 요약된 능력 진단</h2>
-        <p>${category}: ${score} — ${getAbilityLevel(score)}</p>
-        
-        <h2>2. 강점 분석</h2>
-        <p>${getStrengthAnalysis(score)}</p>
-        
-        <h2>3. 보완이 필요한 분야 제시</h2>
-        <p>${getWeaknessAnalysis(score)}</p>
-        
-        <h2>4. 추천 학습 방향 / 자료</h2>
-        <div class="recommended-resources">
-            ${getLearningResources(score)}
+    // 현재 언어에 맞는 결과 메시지 객체 찾기
+    let resultData;
+    for (const result of resultMessages) {
+        if (score >= result.minScore && score <= result.maxScore) {
+            resultData = result;
+            break;
+        }
+    }
+    
+    // 점수 표시
+    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
+    
+    // 상세 결과 분석 HTML 구성
+    let detailedHTML = `
+        <div class="result-summary">
+            <p class="result-message">${resultData.message}</p>
+            <p class="detailed-analysis">${resultData.detailedAnalysis}</p>
         </div>
         
-        <div class="chart-container">
-            <h3>능력 진단 차트</h3>
-            <div class="radar-chart">
-                <canvas id="abilityChart" width="300" height="300"></canvas>
+        <div class="result-details">
+            <div class="strengths-weaknesses">
+                <div class="strengths">
+                    <h2>${lang === 'ko' ? '강점' : lang === 'en' ? 'Strengths' : 'Fortalezas'}</h2>
+                    <ul>
+                        ${resultData.strengths.map(strength => `<li>${strength}</li>`).join('')}
+                    </ul>
+                </div>
+                
+                <div class="weaknesses">
+                    <h2>${lang === 'ko' ? '개선 필요 영역' : lang === 'en' ? 'Areas for Improvement' : 'Áreas de Mejora'}</h2>
+                    <ul>
+                        ${resultData.weaknesses.map(weakness => `<li>${weakness}</li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="recommendations">
+                <h2>${lang === 'ko' ? '학습 추천' : lang === 'en' ? 'Learning Recommendations' : 'Recomendaciones de Aprendizaje'}</h2>
+                <ul class="recommended-resources">
+                    ${resultData.recommendations.map(rec => `
+                        <li>
+                            <a href="${rec.link}" target="_blank">
+                                ${rec.title} <span class="resource-type">(${rec.type})</span>
+                            </a>
+                        </li>
+                    `).join('')}
+                </ul>
+            </div>
+            
+            <div class="career-paths">
+                <h2>${lang === 'ko' ? '관련 직무' : lang === 'en' ? 'Related Career Paths' : 'Trayectorias Profesionales Relacionadas'}</h2>
+                <ul>
+                    ${resultData.careerPaths.map(path => `<li>${path}</li>`).join('')}
+                </ul>
             </div>
         </div>
     `;
     
-    scoreDisplay.textContent = `${lang === 'ko' ? '총점: ' : lang === 'en' ? 'Total Score: ' : 'Puntuación Total: '}${score}`;
-    resultMessageElement.innerHTML = resultHTML;
+    // 결과 메시지 업데이트
+    resultMessageElement.innerHTML = detailedHTML;
     
     surveyContainer.style.display = 'none';
     resultContainer.style.display = 'block';
-    
-    // 차트 생성
-    drawRadarChart(score);
-}
-
-// 능력 수준 반환
-function getAbilityLevel(score) {
-    if (score >= 36) {
-        return "마케팅 원리와 전략을 깊이 이해하는 고급 수준입니다.";
-    } else if (score >= 31) {
-        return "마케팅 기본 개념과 실무 적용이 가능한 중급 수준입니다.";
-    } else if (score >= 21) {
-        return "마케팅 기초 원리를 이해하는 기초 수준입니다.";
-    } else {
-        return "마케팅에 대한 이해가 부족한 입문 수준입니다.";
-    }
-}
-
-// 강점 분석 반환
-function getStrengthAnalysis(score) {
-    if (score >= 36) {
-        return "당신은 마케팅의 핵심 원리와 다양한 전략적 접근법을 깊이 이해하고 있습니다. 마케팅 믹스의 요소들을 전략적으로 활용할 수 있으며, 소비자 행동과 시장 분석에 기반한 마케팅 의사결정을 내릴 수 있는 능력을 갖추고 있습니다.";
-    } else if (score >= 31) {
-        return "당신은 마케팅 기본 개념과 주요 전략을 이해하고 있습니다. 타겟팅, 포지셔닝, 프로모션 전략 등 마케팅 활동의 중요 요소를 파악하고 있으며, 실무에 적용할 수 있는 기본적인 지식을 갖추고 있습니다.";
-    } else if (score >= 21) {
-        return "당신은 마케팅의 기초적인 개념과 원리를 이해하고 있습니다. 4P, 시장 세분화, 기본적인 프로모션 방법 등 마케팅의 기본 요소에 대한 지식을 갖추고 있습니다.";
-    } else {
-        return "당신은 마케팅에 대한 기초적인 인식을 가지고 있으며, 가장 기본적인 마케팅 용어와 개념에 대해 알고 있습니다. 마케팅의 역할과 중요성을 이해하는 수준입니다.";
-    }
-}
-
-// 약점 분석 반환
-function getWeaknessAnalysis(score) {
-    if (score >= 36) {
-        return "고급 수준의 마케팅 이해도를 갖추고 있지만, 더욱 심화된 데이터 분석 기반 마케팅, 신기술을 활용한 최신 마케팅 트렌드, 글로벌 마케팅 전략 등의 영역에서 전문성을 더 발전시킬 수 있습니다.";
-    } else if (score >= 31) {
-        return "마케팅 ROI 측정, 통합 마케팅 커뮤니케이션 전략 수립, 브랜드 가치 구축 등의 영역에서 더 깊은 이해와 실무 적용 능력을 개발할 필요가 있습니다.";
-    } else if (score >= 21) {
-        return "마케팅 전략 수립과 실행, 소비자 행동 분석, 마케팅 성과 측정 등의 영역에서 지식과 경험을 확장할 필요가 있습니다. 이론적 지식을 실무에 적용하는 능력을 키우는 것이 중요합니다.";
-    } else {
-        return "마케팅의 기본 원리와 핵심 개념에 대한 체계적인 이해가 필요합니다. 4P(제품, 가격, 유통, 촉진)의 기본 개념, 시장 세분화, 타겟팅, 포지셔닝 등 마케팅의 기초를 다지는 것이 중요합니다.";
-    }
-}
-
-// 학습 자료 반환
-function getLearningResources(score) {
-    let resources = '<ul>';
-    
-    if (score >= 36) {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">고급 마케팅 전략과 분석</a></li>
-            <li>추천 키워드: '데이터 기반 마케팅', '고객 생애 가치 최적화', '브랜드 에쿼티 관리'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">마케팅 리더를 위한 전략적 사고</a></li>
-        `;
-    } else if (score >= 31) {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">마케팅 전략 심화 과정</a></li>
-            <li>추천 키워드: '통합 마케팅 커뮤니케이션', '마케팅 ROI 분석', '소비자 인사이트 발굴'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">효과적인 마케팅 전략 수립하기</a></li>
-        `;
-    } else if (score >= 21) {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">마케팅 핵심 역량 강화</a></li>
-            <li>추천 키워드: '마케팅 믹스 최적화', '타겟 시장 분석', '마케팅 계획 수립'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">실무에 바로 적용하는 마케팅 기법</a></li>
-        `;
-    } else {
-        resources += `
-            <li><a href="https://www.notion.so" target="_blank">마케팅 기초 이해하기</a></li>
-            <li>추천 키워드: '마케팅 4P', '시장 세분화', '기본 마케팅 용어'</li>
-            <li>무료 YouTube 강좌: <a href="https://www.youtube.com" target="_blank">마케팅 입문자를 위한 기초 강의</a></li>
-        `;
-    }
-    
-    resources += '</ul>';
-    return resources;
-}
-
-// 레이더 차트 그리기
-function drawRadarChart(score) {
-    const canvas = document.getElementById('abilityChart');
-    
-    // 각 항목별 세부 점수 (이 데이터는 실제로는 각 문항별 응답에 따라 계산해야 함)
-    const items = [
-        { label: '기본 이론', score: calculateCategoryScore(0, 3) },     // 문항 1-3
-        { label: '전략 이해', score: calculateCategoryScore(3, 5) },     // 문항 4-5
-        { label: '분석 능력', score: calculateCategoryScore(5, 8) },     // 문항 6-8
-        { label: '트렌드 이해', score: calculateCategoryScore(8, 10) }   // 문항 9-10
-    ];
-    
-    // 레이더 차트 데이터
-    const data = {
-        labels: items.map(item => item.label),
-        datasets: [{
-            label: '능력 진단',
-            data: items.map(item => item.score),
-            fill: true,
-            backgroundColor: getChartColor(score, 0.2),
-            borderColor: getChartColor(score, 1),
-            pointBackgroundColor: getChartColor(score, 1),
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: getChartColor(score, 1)
-        }]
-    };
-    
-    // 차트 옵션
-    const options = {
-        scales: {
-            r: {
-                angleLines: {
-                    display: true
-                },
-                suggestedMin: 0,
-                suggestedMax: 4
-            }
-        }
-    };
-    
-    // 차트 생성
-    if (window.myRadarChart) {
-        window.myRadarChart.destroy();
-    }
-    
-    window.myRadarChart = new Chart(canvas, {
-        type: 'radar',
-        data: data,
-        options: options
-    });
-}
-
-// 각 카테고리별 점수 계산 (start부터 end까지의 문항 평균)
-function calculateCategoryScore(start, end) {
-    let sum = 0;
-    let count = 0;
-    
-    for (let i = start; i < end && i < questions.length; i++) {
-        if (answers[i] !== null) {
-            sum += questions[i].options[answers[i]].score;
-            count++;
-        }
-    }
-    
-    return count > 0 ? sum / count : 0;
-}
-
-// 점수에 따른 차트 색상 반환
-function getChartColor(score, alpha) {
-    if (score >= 36) {
-        return `rgba(0, 128, 0, ${alpha})`; // 초록색
-    } else if (score >= 31) {
-        return `rgba(0, 128, 0, ${alpha})`; // 초록색
-    } else if (score >= 21) {
-        return `rgba(255, 193, 7, ${alpha})`; // 노란색
-    } else {
-        return `rgba(220, 53, 69, ${alpha})`; // 빨간색
-    }
 }
 
 // 메인 페이지로 이동
@@ -435,4 +850,19 @@ restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
 // 페이지 로드 시 초기화
-init(); 
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+}); 

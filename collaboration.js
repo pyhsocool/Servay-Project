@@ -1,5 +1,5 @@
 // 설문 질문 데이터
-const questions = [
+const questionsKO = [
     {
         question: "구글 드라이브로 문서, 시트, 슬라이드를 자유롭게 다룰 수 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I can freely use Google Drive for documents, sheets, and slides.",
+        options: [
+            { text: "I can collaborate with multiple people in real-time", score: 4 },
+            { text: "I can use basic features and share settings", score: 3 },
+            { text: "I can only upload and download files", score: 2 },
+            { text: "I have never used it", score: 1 }
+        ]
+    },
+    {
+        question: "I can communicate effectively through messenger tools like Microsoft Teams or Slack.",
+        options: [
+            { text: "I am proficient with channel management and video conferencing", score: 4 },
+            { text: "I can use messaging and file sharing features", score: 3 },
+            { text: "I can only use basic chat functions", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    },
+    {
+        question: "I can track and manage tasks using project management tools like Trello, Asana, or Jira.",
+        options: [
+            { text: "I can design workflows and set up automation rules", score: 4 },
+            { text: "I can assign tasks and set deadlines", score: 3 },
+            { text: "I can only create and move basic cards", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    },
+    {
+        question: "I can host and participate in video conferences using Zoom, Google Meet, or Microsoft Teams.",
+        options: [
+            { text: "I can manage recording, screen sharing, and breakout rooms", score: 4 },
+            { text: "I can schedule meetings and share my screen", score: 3 },
+            { text: "I can only join meetings and use basic features", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    },
+    {
+        question: "I can visualize and share ideas using collaborative design tools like Figma or Miro.",
+        options: [
+            { text: "I can collaborate in real-time and use advanced features", score: 4 },
+            { text: "I can use templates and do basic design work", score: 3 },
+            { text: "I can only provide feedback and make simple edits", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    },
+    {
+        question: "I can collaborate using version control systems like Git to track code or document changes.",
+        options: [
+            { text: "I am proficient with branch management and conflict resolution", score: 4 },
+            { text: "I can make basic commits, pushes, and pull requests", score: 3 },
+            { text: "I can only commit simple changes", score: 2 },
+            { text: "I have never used these systems", score: 1 }
+        ]
+    },
+    {
+        question: "I can create and manage team documents using knowledge management tools like Confluence or Notion.",
+        options: [
+            { text: "I can design hierarchical document structures and create templates", score: 4 },
+            { text: "I can write documents and use various built-in features", score: 3 },
+            { text: "I can only create and edit basic pages", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    },
+    {
+        question: "I can share and synchronize files using cloud storage like OneDrive or Dropbox.",
+        options: [
+            { text: "I can design folder structures and manage access permissions", score: 4 },
+            { text: "I can create file sharing links and configure sync settings", score: 3 },
+            { text: "I can only upload and download files", score: 2 },
+            { text: "I have never used these services", score: 1 }
+        ]
+    },
+    {
+        question: "I can manage team schedules and book meetings using Calendly or Google Calendar.",
+        options: [
+            { text: "I can manage shared calendars and set up booking systems", score: 4 },
+            { text: "I can schedule meetings and set up notifications", score: 3 },
+            { text: "I can only check schedules and respond to invitations", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    },
+    {
+        question: "I can streamline collaboration workflows using automation tools like Zapier or IFTTT.",
+        options: [
+            { text: "I can design complex multi-app workflows", score: 4 },
+            { text: "I can set up basic automation between apps", score: 3 },
+            { text: "I can only use templates for simple automation", score: 2 },
+            { text: "I have never used these tools", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo usar libremente Google Drive para documentos, hojas de cálculo y presentaciones.",
+        options: [
+            { text: "Puedo colaborar con varias personas en tiempo real", score: 4 },
+            { text: "Puedo usar funciones básicas y configurar opciones de compartir", score: 3 },
+            { text: "Solo puedo subir y descargar archivos", score: 2 },
+            { text: "Nunca lo he usado", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo comunicarme eficazmente a través de herramientas de mensajería como Microsoft Teams o Slack.",
+        options: [
+            { text: "Domino la gestión de canales y videoconferencias", score: 4 },
+            { text: "Puedo usar funciones de mensajería y compartir archivos", score: 3 },
+            { text: "Solo puedo usar funciones básicas de chat", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo seguir y gestionar tareas con herramientas de gestión de proyectos como Trello, Asana o Jira.",
+        options: [
+            { text: "Puedo diseñar flujos de trabajo y configurar reglas de automatización", score: 4 },
+            { text: "Puedo asignar tareas y establecer fechas límite", score: 3 },
+            { text: "Solo puedo crear y mover tarjetas básicas", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo organizar y participar en videoconferencias usando Zoom, Google Meet o Microsoft Teams.",
+        options: [
+            { text: "Puedo gestionar grabaciones, compartir pantalla y salas para grupos", score: 4 },
+            { text: "Puedo programar reuniones y compartir mi pantalla", score: 3 },
+            { text: "Solo puedo unirme a reuniones y usar funciones básicas", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo visualizar y compartir ideas usando herramientas de diseño colaborativo como Figma o Miro.",
+        options: [
+            { text: "Puedo colaborar en tiempo real y usar funciones avanzadas", score: 4 },
+            { text: "Puedo usar plantillas y hacer trabajos de diseño básicos", score: 3 },
+            { text: "Solo puedo proporcionar feedback y hacer ediciones simples", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo colaborar usando sistemas de control de versiones como Git para seguir cambios en código o documentos.",
+        options: [
+            { text: "Domino la gestión de ramas y resolución de conflictos", score: 4 },
+            { text: "Puedo hacer commits básicos, pushes y pull requests", score: 3 },
+            { text: "Solo puedo hacer commit de cambios simples", score: 2 },
+            { text: "Nunca he usado estos sistemas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear y gestionar documentos de equipo usando herramientas de gestión de conocimiento como Confluence o Notion.",
+        options: [
+            { text: "Puedo diseñar estructuras de documentos jerárquicas y crear plantillas", score: 4 },
+            { text: "Puedo escribir documentos y usar varias funciones incorporadas", score: 3 },
+            { text: "Solo puedo crear y editar páginas básicas", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo compartir y sincronizar archivos usando almacenamiento en la nube como OneDrive o Dropbox.",
+        options: [
+            { text: "Puedo diseñar estructuras de carpetas y gestionar permisos de acceso", score: 4 },
+            { text: "Puedo crear enlaces para compartir archivos y configurar ajustes de sincronización", score: 3 },
+            { text: "Solo puedo subir y descargar archivos", score: 2 },
+            { text: "Nunca he usado estos servicios", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo gestionar horarios de equipo y programar reuniones usando Calendly o Google Calendar.",
+        options: [
+            { text: "Puedo gestionar calendarios compartidos y configurar sistemas de reservas", score: 4 },
+            { text: "Puedo programar reuniones y configurar notificaciones", score: 3 },
+            { text: "Solo puedo verificar horarios y responder a invitaciones", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo optimizar flujos de trabajo de colaboración usando herramientas de automatización como Zapier o IFTTT.",
+        options: [
+            { text: "Puedo diseñar flujos de trabajo complejos con múltiples aplicaciones", score: 4 },
+            { text: "Puedo configurar automatizaciones básicas entre aplicaciones", score: 3 },
+            { text: "Solo puedo usar plantillas para automatizaciones simples", score: 2 },
+            { text: "Nunca he usado estas herramientas", score: 1 }
+        ]
+    }
+];
+
 // 결과 메시지 데이터
-const resultMessages = [
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,58 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need a basic understanding of collaboration tools. It's recommended to start with the most commonly used tools (Google Drive, Slack, Zoom, etc.)."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You can use basic collaboration tools but need experience with more diverse, complex tools. Try actively using new collaboration tools in team projects."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You can skillfully use multiple collaboration tools. Learn more advanced features like automation tools or API integration to increase collaboration efficiency."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You can professionally use various collaboration tools. You can share how to use collaboration tools with your team or lead workflow improvements."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas una comprensión básica de las herramientas de colaboración. Se recomienda comenzar con las herramientas más utilizadas (Google Drive, Slack, Zoom, etc.)."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Puedes usar herramientas básicas de colaboración pero necesitas experiencia con herramientas más diversas y complejas. Intenta usar activamente nuevas herramientas de colaboración en proyectos de equipo."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Puedes usar hábilmente múltiples herramientas de colaboración. Aprende funciones más avanzadas como herramientas de automatización o integración de API para aumentar la eficiencia de la colaboración."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Puedes usar profesionalmente varias herramientas de colaboración. Puedes compartir cómo usar herramientas de colaboración con tu equipo o liderar mejoras en el flujo de trabajo."
+    }
+];
+
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -132,6 +372,27 @@ const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
 
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'ko') {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    } else if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    }
+    
+    // 현재 화면 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    } else if (resultContainer.style.display !== 'none') {
+        showResult();
+    }
+}
+
 // 초기화
 function init() {
     currentQuestionIndex = 0;
@@ -139,6 +400,19 @@ function init() {
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -406,4 +680,19 @@ restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
 // 페이지 로드 시 초기화
-init(); 
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+}); 

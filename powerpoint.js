@@ -1,5 +1,5 @@
 // 설문 질문 데이터
-const questions = [
+const questionsKO = [
     {
         question: "효과적인 슬라이드 레이아웃을 설계하고 구성할 수 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I can create clear and effective presentation slides.",
+        options: [
+            { text: "I can design professional-quality slides with excellent visual hierarchy", score: 4 },
+            { text: "I can create clear slides with good organization of information", score: 3 },
+            { text: "I can make basic slides but struggle with design principles", score: 2 },
+            { text: "I have difficulty creating organized and effective slides", score: 1 }
+        ]
+    },
+    {
+        question: "I can use appropriate visual elements (images, charts, diagrams) to support my message.",
+        options: [
+            { text: "I strategically select and create visuals that enhance understanding", score: 4 },
+            { text: "I use relevant visuals to support key points", score: 3 },
+            { text: "I occasionally include basic visuals in my presentations", score: 2 },
+            { text: "I rarely use visual elements in my presentations", score: 1 }
+        ]
+    },
+    {
+        question: "I can create and format charts and graphs that clearly display data.",
+        options: [
+            { text: "I can create customized, clear data visualizations that highlight insights", score: 4 },
+            { text: "I can create and format basic charts to represent data", score: 3 },
+            { text: "I can use pre-made chart templates with minimal customization", score: 2 },
+            { text: "I struggle to create charts that represent data effectively", score: 1 }
+        ]
+    },
+    {
+        question: "I can apply consistent design principles (color schemes, fonts, layouts) throughout a presentation.",
+        options: [
+            { text: "I can create and apply professional design systems across presentations", score: 4 },
+            { text: "I maintain consistent basic design elements throughout presentations", score: 3 },
+            { text: "I use templates but sometimes apply inconsistent customizations", score: 2 },
+            { text: "My presentations lack design consistency", score: 1 }
+        ]
+    },
+    {
+        question: "I can use animation and transitions effectively and appropriately.",
+        options: [
+            { text: "I use strategic animations to enhance understanding and engagement", score: 4 },
+            { text: "I apply simple animations that support content flow", score: 3 },
+            { text: "I occasionally use basic animations, sometimes distractingly", score: 2 },
+            { text: "I either don't use animations or use them inappropriately", score: 1 }
+        ]
+    },
+    {
+        question: "I can create presentations that tell a cohesive story with clear flow.",
+        options: [
+            { text: "I craft presentations with compelling narratives and excellent flow", score: 4 },
+            { text: "I organize content in a logical sequence with clear connections", score: 3 },
+            { text: "My presentations follow a basic structure but lack strong narrative", score: 2 },
+            { text: "My presentations often seem disconnected or poorly organized", score: 1 }
+        ]
+    },
+    {
+        question: "I can design slides with appropriate text density and readability.",
+        options: [
+            { text: "I create slides with optimal text-to-visual ratio and excellent readability", score: 4 },
+            { text: "I keep text concise and readable in most slides", score: 3 },
+            { text: "My slides sometimes contain too much text or poor contrast", score: 2 },
+            { text: "My slides often contain excessive text or readability issues", score: 1 }
+        ]
+    },
+    {
+        question: "I can tailor presentations for different audiences and purposes.",
+        options: [
+            { text: "I expertly customize presentations for specific audiences and contexts", score: 4 },
+            { text: "I adjust content and style based on audience needs", score: 3 },
+            { text: "I make minor adjustments for different audiences", score: 2 },
+            { text: "I use the same presentation approach regardless of audience", score: 1 }
+        ]
+    },
+    {
+        question: "I can create effective speaker notes to support presentation delivery.",
+        options: [
+            { text: "I create comprehensive, well-structured speaker notes that enhance delivery", score: 4 },
+            { text: "I prepare helpful notes for key points and transitions", score: 3 },
+            { text: "I sometimes create basic notes but rely more on slides", score: 2 },
+            { text: "I rarely use speaker notes in my presentations", score: 1 }
+        ]
+    },
+    {
+        question: "I can collaborate with others to create and edit presentations.",
+        options: [
+            { text: "I can lead collaborative presentation creation with excellent coordination", score: 4 },
+            { text: "I work effectively with others on shared presentations", score: 3 },
+            { text: "I can collaborate but sometimes face integration challenges", score: 2 },
+            { text: "I struggle to work collaboratively on presentations", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo crear diapositivas de presentación claras y efectivas.",
+        options: [
+            { text: "Puedo diseñar diapositivas de calidad profesional con excelente jerarquía visual", score: 4 },
+            { text: "Puedo crear diapositivas claras con buena organización de información", score: 3 },
+            { text: "Puedo hacer diapositivas básicas pero tengo dificultades con principios de diseño", score: 2 },
+            { text: "Tengo dificultad para crear diapositivas organizadas y efectivas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo usar elementos visuales apropiados (imágenes, gráficos, diagramas) para apoyar mi mensaje.",
+        options: [
+            { text: "Selecciono y creo estratégicamente visuales que mejoran la comprensión", score: 4 },
+            { text: "Uso visuales relevantes para apoyar puntos clave", score: 3 },
+            { text: "Ocasionalmente incluyo visuales básicos en mis presentaciones", score: 2 },
+            { text: "Raramente uso elementos visuales en mis presentaciones", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear y formatear gráficos que muestren claramente los datos.",
+        options: [
+            { text: "Puedo crear visualizaciones de datos personalizadas y claras que destacan insights", score: 4 },
+            { text: "Puedo crear y formatear gráficos básicos para representar datos", score: 3 },
+            { text: "Puedo usar plantillas de gráficos prediseñadas con personalización mínima", score: 2 },
+            { text: "Tengo dificultades para crear gráficos que representen datos efectivamente", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo aplicar principios de diseño consistentes (esquemas de color, fuentes, diseños) en toda la presentación.",
+        options: [
+            { text: "Puedo crear y aplicar sistemas de diseño profesionales en presentaciones", score: 4 },
+            { text: "Mantengo elementos de diseño básicos consistentes en presentaciones", score: 3 },
+            { text: "Uso plantillas pero a veces aplico personalizaciones inconsistentes", score: 2 },
+            { text: "Mis presentaciones carecen de consistencia en el diseño", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo usar animaciones y transiciones de manera efectiva y apropiada.",
+        options: [
+            { text: "Uso animaciones estratégicas para mejorar la comprensión y participación", score: 4 },
+            { text: "Aplico animaciones simples que apoyan el flujo de contenido", score: 3 },
+            { text: "Ocasionalmente uso animaciones básicas, a veces distractivas", score: 2 },
+            { text: "No uso animaciones o las uso inapropiadamente", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear presentaciones que cuentan una historia cohesiva con flujo claro.",
+        options: [
+            { text: "Elaboro presentaciones con narrativas convincentes y excelente flujo", score: 4 },
+            { text: "Organizo contenido en secuencia lógica con conexiones claras", score: 3 },
+            { text: "Mis presentaciones siguen estructura básica pero carecen de narrativa fuerte", score: 2 },
+            { text: "Mis presentaciones a menudo parecen desconectadas o mal organizadas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo diseñar diapositivas con densidad de texto apropiada y legibilidad.",
+        options: [
+            { text: "Creo diapositivas con proporción texto-visual óptima y excelente legibilidad", score: 4 },
+            { text: "Mantengo texto conciso y legible en la mayoría de diapositivas", score: 3 },
+            { text: "Mis diapositivas a veces contienen demasiado texto o poco contraste", score: 2 },
+            { text: "Mis diapositivas a menudo contienen texto excesivo o problemas de legibilidad", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo adaptar presentaciones para diferentes audiencias y propósitos.",
+        options: [
+            { text: "Personalizo expertamente presentaciones para audiencias y contextos específicos", score: 4 },
+            { text: "Ajusto contenido y estilo según necesidades de la audiencia", score: 3 },
+            { text: "Hago ajustes menores para diferentes audiencias", score: 2 },
+            { text: "Uso el mismo enfoque de presentación independientemente de la audiencia", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear notas efectivas para el presentador que apoyen la entrega de la presentación.",
+        options: [
+            { text: "Creo notas completas y bien estructuradas que mejoran la entrega", score: 4 },
+            { text: "Preparo notas útiles para puntos clave y transiciones", score: 3 },
+            { text: "A veces creo notas básicas pero dependo más de las diapositivas", score: 2 },
+            { text: "Raramente uso notas del presentador en mis presentaciones", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo colaborar con otros para crear y editar presentaciones.",
+        options: [
+            { text: "Puedo liderar creación colaborativa de presentaciones con excelente coordinación", score: 4 },
+            { text: "Trabajo efectivamente con otros en presentaciones compartidas", score: 3 },
+            { text: "Puedo colaborar pero a veces enfrento desafíos de integración", score: 2 },
+            { text: "Tengo dificultades para trabajar colaborativamente en presentaciones", score: 1 }
+        ]
+    }
+];
+
 // 결과 메시지 데이터
-const resultMessages = [
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,58 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to develop basic presentation design skills. Focus on learning slide organization, visual design principles, and creating a cohesive presentation flow."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You understand presentation fundamentals but need more practice with visual design, data visualization, and storytelling techniques to create more engaging presentations."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You create good presentations with clear organization and appropriate visuals. Continue developing your skills in audience adaptation and advanced visual storytelling."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You have excellent presentation design skills. Your presentations are well-designed, visually compelling, and effectively communicate information through strategic use of visuals and narrative."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas desarrollar habilidades básicas de diseño de presentaciones. Concéntrate en aprender organización de diapositivas, principios de diseño visual y crear un flujo cohesivo de presentación."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Entiendes los fundamentos de presentaciones pero necesitas más práctica con diseño visual, visualización de datos y técnicas narrativas para crear presentaciones más atractivas."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Creas buenas presentaciones con organización clara y elementos visuales apropiados. Continúa desarrollando tus habilidades en adaptación a la audiencia y narración visual avanzada."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Tienes excelentes habilidades de diseño de presentaciones. Tus presentaciones están bien diseñadas, son visualmente atractivas y comunican información efectivamente mediante uso estratégico de visuales y narrativa."
+    }
+];
+
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -132,13 +372,47 @@ const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
 
-// 초기화
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'ko') {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    } else if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    }
+    
+    // 현재 화면 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    } else if (resultContainer.style.display !== 'none') {
+        showResult();
+    }
+}
+
+// 초기화 함수 수정
 function init() {
     currentQuestionIndex = 0;
     answers = new Array(questions.length).fill(null);
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -434,5 +708,20 @@ submitBtn.addEventListener('click', showResult);
 restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
-// 페이지 로드 시 초기화
-init(); 
+// 페이지 로드 시 초기화 수정
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+}); 

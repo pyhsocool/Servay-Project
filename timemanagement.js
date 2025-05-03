@@ -1,5 +1,5 @@
 // 설문 질문 데이터
-const questions = [
+const questionsKO = [
     {
         question: "업무나 과제의 우선순위를 효과적으로 설정할 수 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I can set clear priorities for tasks and focus on what's most important.",
+        options: [
+            { text: "I consistently identify and focus on high-priority tasks", score: 4 },
+            { text: "I usually prioritize tasks effectively", score: 3 },
+            { text: "I sometimes struggle to determine priorities", score: 2 },
+            { text: "I rarely prioritize my tasks", score: 1 }
+        ]
+    },
+    {
+        question: "I can create realistic schedules and deadlines for my tasks.",
+        options: [
+            { text: "I create detailed, achievable schedules with accurate time estimates", score: 4 },
+            { text: "I set reasonable deadlines for most tasks", score: 3 },
+            { text: "I often underestimate time requirements", score: 2 },
+            { text: "I rarely plan specific timelines for tasks", score: 1 }
+        ]
+    },
+    {
+        question: "I can avoid procrastination and start tasks promptly.",
+        options: [
+            { text: "I consistently start and complete tasks without procrastination", score: 4 },
+            { text: "I usually start tasks promptly with occasional delays", score: 3 },
+            { text: "I frequently procrastinate on many tasks", score: 2 },
+            { text: "I struggle significantly with procrastination", score: 1 }
+        ]
+    },
+    {
+        question: "I can manage distractions and maintain focus when working.",
+        options: [
+            { text: "I effectively minimize distractions and maintain deep focus", score: 4 },
+            { text: "I usually manage to stay focused despite occasional distractions", score: 3 },
+            { text: "I'm frequently interrupted and struggle to refocus", score: 2 },
+            { text: "I find it very difficult to focus on tasks", score: 1 }
+        ]
+    },
+    {
+        question: "I can use time management tools and techniques effectively.",
+        options: [
+            { text: "I use multiple time management systems and tools effectively", score: 4 },
+            { text: "I consistently use basic time management techniques", score: 3 },
+            { text: "I occasionally use simple time management methods", score: 2 },
+            { text: "I don't use any specific time management techniques", score: 1 }
+        ]
+    },
+    {
+        question: "I can delegate tasks appropriately when working with others.",
+        options: [
+            { text: "I strategically delegate tasks based on strengths and workload", score: 4 },
+            { text: "I generally delegate tasks when appropriate", score: 3 },
+            { text: "I occasionally delegate but prefer handling tasks myself", score: 2 },
+            { text: "I rarely delegate tasks to others", score: 1 }
+        ]
+    },
+    {
+        question: "I can balance multiple projects and responsibilities effectively.",
+        options: [
+            { text: "I expertly manage multiple complex projects simultaneously", score: 4 },
+            { text: "I can handle several projects with reasonable organization", score: 3 },
+            { text: "I struggle when managing multiple responsibilities", score: 2 },
+            { text: "I can only focus effectively on one project at a time", score: 1 }
+        ]
+    },
+    {
+        question: "I can avoid overcommitting and say 'no' when necessary.",
+        options: [
+            { text: "I confidently decline commitments that would overextend me", score: 4 },
+            { text: "I usually assess my capacity before taking on new tasks", score: 3 },
+            { text: "I sometimes take on more than I can handle", score: 2 },
+            { text: "I frequently overcommit and have trouble saying no", score: 1 }
+        ]
+    },
+    {
+        question: "I can manage stress and maintain work-life balance.",
+        options: [
+            { text: "I maintain excellent work-life balance with minimal stress", score: 4 },
+            { text: "I generally maintain reasonable work-life boundaries", score: 3 },
+            { text: "I often work overtime and experience moderate stress", score: 2 },
+            { text: "My work regularly overwhelms other life aspects", score: 1 }
+        ]
+    },
+    {
+        question: "I can adjust my time management approach when priorities or circumstances change.",
+        options: [
+            { text: "I adapt quickly and effectively to changing priorities", score: 4 },
+            { text: "I can usually adjust plans when circumstances change", score: 3 },
+            { text: "I find it challenging to adapt when plans change", score: 2 },
+            { text: "I struggle significantly with changes to my schedule", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo establecer prioridades claras para tareas y concentrarme en lo más importante.",
+        options: [
+            { text: "Constantemente identifico y me enfoco en tareas de alta prioridad", score: 4 },
+            { text: "Usualmente priorizo tareas efectivamente", score: 3 },
+            { text: "A veces tengo dificultades para determinar prioridades", score: 2 },
+            { text: "Raramente priorizo mis tareas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear horarios y plazos realistas para mis tareas.",
+        options: [
+            { text: "Creo horarios detallados y alcanzables con estimaciones precisas", score: 4 },
+            { text: "Establezco plazos razonables para la mayoría de tareas", score: 3 },
+            { text: "A menudo subestimo los requisitos de tiempo", score: 2 },
+            { text: "Raramente planifico cronogramas específicos para tareas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo evitar la procrastinación y comenzar tareas prontamente.",
+        options: [
+            { text: "Constantemente inicio y completo tareas sin procrastinar", score: 4 },
+            { text: "Usualmente comienzo tareas prontamente con retrasos ocasionales", score: 3 },
+            { text: "Frecuentemente procrastino en muchas tareas", score: 2 },
+            { text: "Tengo significativas dificultades con la procrastinación", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo gestionar distracciones y mantener el enfoque al trabajar.",
+        options: [
+            { text: "Efectivamente minimizo distracciones y mantengo concentración profunda", score: 4 },
+            { text: "Usualmente logro mantenerme enfocado a pesar de distracciones ocasionales", score: 3 },
+            { text: "Soy frecuentemente interrumpido y me cuesta reconcentrarme", score: 2 },
+            { text: "Encuentro muy difícil concentrarme en tareas", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo usar herramientas y técnicas de gestión del tiempo efectivamente.",
+        options: [
+            { text: "Uso múltiples sistemas y herramientas de gestión del tiempo efectivamente", score: 4 },
+            { text: "Consistentemente uso técnicas básicas de gestión del tiempo", score: 3 },
+            { text: "Ocasionalmente uso métodos simples de gestión del tiempo", score: 2 },
+            { text: "No uso técnicas específicas de gestión del tiempo", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo delegar tareas apropiadamente cuando trabajo con otros.",
+        options: [
+            { text: "Estratégicamente delego tareas basado en fortalezas y carga de trabajo", score: 4 },
+            { text: "Generalmente delego tareas cuando es apropiado", score: 3 },
+            { text: "Ocasionalmente delego pero prefiero manejar tareas yo mismo", score: 2 },
+            { text: "Raramente delego tareas a otros", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo equilibrar múltiples proyectos y responsabilidades efectivamente.",
+        options: [
+            { text: "Expertamente manejo múltiples proyectos complejos simultáneamente", score: 4 },
+            { text: "Puedo manejar varios proyectos con organización razonable", score: 3 },
+            { text: "Tengo dificultades cuando manejo múltiples responsabilidades", score: 2 },
+            { text: "Solo puedo enfocarme efectivamente en un proyecto a la vez", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo evitar sobrecomprometerme y decir 'no' cuando es necesario.",
+        options: [
+            { text: "Confiadamente rechazo compromisos que me sobrecargarían", score: 4 },
+            { text: "Usualmente evalúo mi capacidad antes de asumir nuevas tareas", score: 3 },
+            { text: "A veces acepto más de lo que puedo manejar", score: 2 },
+            { text: "Frecuentemente me sobrecomprometo y tengo problemas diciendo no", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo manejar el estrés y mantener equilibrio trabajo-vida.",
+        options: [
+            { text: "Mantengo excelente equilibrio trabajo-vida con mínimo estrés", score: 4 },
+            { text: "Generalmente mantengo límites razonables entre trabajo y vida", score: 3 },
+            { text: "A menudo trabajo horas extras y experimento estrés moderado", score: 2 },
+            { text: "Mi trabajo regularmente abruma otros aspectos de mi vida", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo ajustar mi enfoque de gestión del tiempo cuando cambian prioridades o circunstancias.",
+        options: [
+            { text: "Me adapto rápida y efectivamente a prioridades cambiantes", score: 4 },
+            { text: "Usualmente puedo ajustar planes cuando cambian las circunstancias", score: 3 },
+            { text: "Encuentro desafiante adaptarme cuando los planes cambian", score: 2 },
+            { text: "Tengo significativas dificultades con cambios en mi horario", score: 1 }
+        ]
+    }
+];
+
 // 결과 메시지 데이터
-const resultMessages = [
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -115,6 +303,58 @@ const resultMessages = [
         message: "고급 수준: 뛰어난 시간 관리 능력을 갖추고 있습니다. 복잡한 업무와 프로젝트도 효율적으로 관리하고, 예상치 못한 상황에도 유연하게 대응할 수 있습니다. 이제 다른 사람들의 시간 관리를 돕고 팀의 효율성을 높이는 데 기여해보세요."
     }
 ];
+
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to develop basic time management skills. Focus on learning prioritization, creating realistic schedules, and minimizing procrastination."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You have some time management skills but need to improve consistency. Practice using specific time management techniques, managing distractions better, and balancing multiple responsibilities."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You have good time management skills. Continue developing your ability to manage multiple projects, delegate effectively, and maintain work-life balance."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You have excellent time management skills. You effectively prioritize tasks, minimize distractions, and balance multiple responsibilities while maintaining healthy work-life boundaries."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas desarrollar habilidades básicas de gestión del tiempo. Concéntrate en aprender priorización, crear horarios realistas y minimizar la procrastinación."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Tienes algunas habilidades de gestión del tiempo pero necesitas mejorar la consistencia. Practica usando técnicas específicas de gestión del tiempo, manejando mejor las distracciones y equilibrando múltiples responsabilidades."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Tienes buenas habilidades de gestión del tiempo. Continúa desarrollando tu capacidad para manejar múltiples proyectos, delegar efectivamente y mantener equilibrio trabajo-vida."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Tienes excelentes habilidades de gestión del tiempo. Efectivamente priorizas tareas, minimizas distracciones y equilibras múltiples responsabilidades mientras mantienes límites saludables entre trabajo y vida."
+    }
+];
+
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
 
 // 전역 변수
 let currentQuestionIndex = 0;
@@ -139,6 +379,19 @@ function init() {
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -427,6 +680,27 @@ function goToMainPage() {
     window.location.href = `index.html?lang=${lang}`;
 }
 
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'ko') {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    } else if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    }
+    
+    // 현재 화면 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    } else if (resultContainer.style.display !== 'none') {
+        showResult();
+    }
+}
+
 // 이벤트 리스너
 prevBtn.addEventListener('click', goToPreviousQuestion);
 nextBtn.addEventListener('click', goToNextQuestion);
@@ -434,26 +708,20 @@ submitBtn.addEventListener('click', showResult);
 restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
-// 페이지 로드 시 초기화
+// 페이지 로드 시 초기화 수정
 document.addEventListener('DOMContentLoaded', function() {
-    // URL 파라미터에서 언어 정보 가져오기
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlLang = urlParams.get('lang');
-    
-    // localStorage에 저장된 언어 정보 확인
-    let savedLanguage = localStorage.getItem('selectedLanguage');
-    
-    // URL 파라미터에 언어 정보가 있으면 우선 사용하고 localStorage에 저장
-    if (urlLang) {
-        localStorage.setItem('selectedLanguage', urlLang);
-        savedLanguage = urlLang;
-    }
-    
-    // 공통 언어 설정 적용
-    if (typeof applyStoredLanguageToPage === 'function') {
-        applyStoredLanguageToPage();
-    }
-    
-    // 초기화
     init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
 }); 

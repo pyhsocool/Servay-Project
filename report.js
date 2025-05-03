@@ -1,5 +1,5 @@
 // 설문 질문 데이터
-const questions = [
+const questionsKO = [
     {
         question: "업무 보고서를 논리적인 구조로 작성할 수 있다.",
         options: [
@@ -92,8 +92,196 @@ const questions = [
     }
 ];
 
+// 영어 설문 질문 데이터
+const questionsEN = [
+    {
+        question: "I can write effective executive summaries that capture the key points of longer reports.",
+        options: [
+            { text: "I can create concise, impactful executive summaries", score: 4 },
+            { text: "I can write basic summaries of main points", score: 3 },
+            { text: "I can only summarize simple information", score: 2 },
+            { text: "I have no experience writing executive summaries", score: 1 }
+        ]
+    },
+    {
+        question: "I can organize and structure reports logically with appropriate headings and sections.",
+        options: [
+            { text: "I can create optimal hierarchical structures for complex reports", score: 4 },
+            { text: "I can organize basic reports with appropriate sections", score: 3 },
+            { text: "I can use basic templates for organization", score: 2 },
+            { text: "I have difficulty organizing information in reports", score: 1 }
+        ]
+    },
+    {
+        question: "I can incorporate and interpret data/statistics effectively in reports.",
+        options: [
+            { text: "I can analyze complex data and present meaningful interpretations", score: 4 },
+            { text: "I can present basic data with simple interpretations", score: 3 },
+            { text: "I can include data but struggle with interpretation", score: 2 },
+            { text: "I avoid using data in my reports", score: 1 }
+        ]
+    },
+    {
+        question: "I can create appropriate data visualizations (charts, graphs, tables) for reports.",
+        options: [
+            { text: "I can select and create optimal visualizations for complex data", score: 4 },
+            { text: "I can create basic charts and tables for data", score: 3 },
+            { text: "I can use pre-designed templates for visualizations", score: 2 },
+            { text: "I don't know how to create data visualizations", score: 1 }
+        ]
+    },
+    {
+        question: "I can write clear and actionable recommendations based on report findings.",
+        options: [
+            { text: "I can develop strategic, well-supported recommendations", score: 4 },
+            { text: "I can suggest basic actions based on findings", score: 3 },
+            { text: "I sometimes include simple recommendations", score: 2 },
+            { text: "I rarely include recommendations in reports", score: 1 }
+        ]
+    },
+    {
+        question: "I can adapt report content and language for different audiences (technical, executive, general).",
+        options: [
+            { text: "I can expertly tailor reports for any audience", score: 4 },
+            { text: "I can adjust basic terminology for different readers", score: 3 },
+            { text: "I write in the same style regardless of audience", score: 2 },
+            { text: "I don't consider audience when writing reports", score: 1 }
+        ]
+    },
+    {
+        question: "I can properly cite sources and create bibliographies using appropriate formatting styles.",
+        options: [
+            { text: "I can use multiple citation styles correctly", score: 4 },
+            { text: "I can create basic citations and references", score: 3 },
+            { text: "I include sources but without proper formatting", score: 2 },
+            { text: "I rarely cite sources in my reports", score: 1 }
+        ]
+    },
+    {
+        question: "I can use appendices appropriately to include supplementary information without cluttering the main report.",
+        options: [
+            { text: "I strategically organize supplementary material in appendices", score: 4 },
+            { text: "I sometimes use appendices for additional information", score: 3 },
+            { text: "I rarely use appendices in my reports", score: 2 },
+            { text: "I include all information in the main body", score: 1 }
+        ]
+    },
+    {
+        question: "I can write concise, informative abstracts that summarize the entire report.",
+        options: [
+            { text: "I can write comprehensive yet concise abstracts", score: 4 },
+            { text: "I can write basic summaries covering main points", score: 3 },
+            { text: "My abstracts often miss key information", score: 2 },
+            { text: "I rarely write abstracts for my reports", score: 1 }
+        ]
+    },
+    {
+        question: "I can effectively edit and proofread reports to ensure accuracy, clarity, and professionalism.",
+        options: [
+            { text: "I can thoroughly edit for content, style, and errors", score: 4 },
+            { text: "I can check for basic errors and clarity issues", score: 3 },
+            { text: "I only look for spelling and grammar mistakes", score: 2 },
+            { text: "I rarely review my reports before submitting", score: 1 }
+        ]
+    }
+];
+
+// 스페인어 설문 질문 데이터
+const questionsES = [
+    {
+        question: "Puedo escribir resúmenes ejecutivos efectivos que capturan los puntos clave de informes más extensos.",
+        options: [
+            { text: "Puedo crear resúmenes ejecutivos concisos e impactantes", score: 4 },
+            { text: "Puedo escribir resúmenes básicos de puntos principales", score: 3 },
+            { text: "Solo puedo resumir información simple", score: 2 },
+            { text: "No tengo experiencia escribiendo resúmenes ejecutivos", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo organizar y estructurar informes lógicamente con títulos y secciones apropiados.",
+        options: [
+            { text: "Puedo crear estructuras jerárquicas óptimas para informes complejos", score: 4 },
+            { text: "Puedo organizar informes básicos con secciones apropiadas", score: 3 },
+            { text: "Puedo usar plantillas básicas para organización", score: 2 },
+            { text: "Tengo dificultad para organizar información en informes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo incorporar e interpretar datos/estadísticas efectivamente en informes.",
+        options: [
+            { text: "Puedo analizar datos complejos y presentar interpretaciones significativas", score: 4 },
+            { text: "Puedo presentar datos básicos con interpretaciones simples", score: 3 },
+            { text: "Puedo incluir datos pero tengo dificultades con la interpretación", score: 2 },
+            { text: "Evito usar datos en mis informes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo crear visualizaciones de datos apropiadas (gráficos, tablas) para informes.",
+        options: [
+            { text: "Puedo seleccionar y crear visualizaciones óptimas para datos complejos", score: 4 },
+            { text: "Puedo crear gráficos y tablas básicos para datos", score: 3 },
+            { text: "Puedo usar plantillas prediseñadas para visualizaciones", score: 2 },
+            { text: "No sé cómo crear visualizaciones de datos", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo escribir recomendaciones claras y accionables basadas en hallazgos del informe.",
+        options: [
+            { text: "Puedo desarrollar recomendaciones estratégicas bien fundamentadas", score: 4 },
+            { text: "Puedo sugerir acciones básicas basadas en hallazgos", score: 3 },
+            { text: "A veces incluyo recomendaciones simples", score: 2 },
+            { text: "Raramente incluyo recomendaciones en informes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo adaptar el contenido y lenguaje del informe para diferentes audiencias (técnica, ejecutiva, general).",
+        options: [
+            { text: "Puedo adaptar expertamente informes para cualquier audiencia", score: 4 },
+            { text: "Puedo ajustar terminología básica para diferentes lectores", score: 3 },
+            { text: "Escribo en el mismo estilo independientemente de la audiencia", score: 2 },
+            { text: "No considero la audiencia al escribir informes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo citar fuentes correctamente y crear bibliografías usando estilos de formato apropiados.",
+        options: [
+            { text: "Puedo usar múltiples estilos de citación correctamente", score: 4 },
+            { text: "Puedo crear citas y referencias básicas", score: 3 },
+            { text: "Incluyo fuentes pero sin formato adecuado", score: 2 },
+            { text: "Raramente cito fuentes en mis informes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo usar apéndices apropiadamente para incluir información suplementaria sin sobrecargar el informe principal.",
+        options: [
+            { text: "Organizo estratégicamente material suplementario en apéndices", score: 4 },
+            { text: "A veces uso apéndices para información adicional", score: 3 },
+            { text: "Raramente uso apéndices en mis informes", score: 2 },
+            { text: "Incluyo toda la información en el cuerpo principal", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo escribir resúmenes concisos e informativos que resumen el informe completo.",
+        options: [
+            { text: "Puedo escribir resúmenes completos pero concisos", score: 4 },
+            { text: "Puedo escribir resúmenes básicos cubriendo puntos principales", score: 3 },
+            { text: "Mis resúmenes a menudo omiten información clave", score: 2 },
+            { text: "Raramente escribo resúmenes para mis informes", score: 1 }
+        ]
+    },
+    {
+        question: "Puedo editar y revisar informes efectivamente para asegurar precisión, claridad y profesionalismo.",
+        options: [
+            { text: "Puedo editar minuciosamente contenido, estilo y errores", score: 4 },
+            { text: "Puedo verificar errores básicos y problemas de claridad", score: 3 },
+            { text: "Solo busco errores de ortografía y gramática", score: 2 },
+            { text: "Raramente reviso mis informes antes de enviarlos", score: 1 }
+        ]
+    }
+];
+
 // 결과 메시지 데이터
-const resultMessages = [
+const resultMessagesKO = [
     {
         minScore: 10,
         maxScore: 20,
@@ -116,6 +304,54 @@ const resultMessages = [
     }
 ];
 
+// 영어 결과 메시지 데이터
+const resultMessagesEN = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Beginner Level: You need to develop basic report writing skills. Focus on learning fundamental structure, data presentation, and clear communication of findings."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Basic Level: You understand report basics but need more practice with report organization, data analysis, and tailoring content for different audiences."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Intermediate Level: You have good report writing skills. Continue developing your ability to interpret complex data and make strategic recommendations."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Advanced Level: You have excellent report writing skills. Your reports are well-structured, contain meaningful data analysis, and offer actionable insights."
+    }
+];
+
+// 스페인어 결과 메시지 데이터
+const resultMessagesES = [
+    {
+        minScore: 10,
+        maxScore: 20,
+        message: "Nivel Principiante: Necesitas desarrollar habilidades básicas de redacción de informes. Concéntrate en aprender estructura fundamental, presentación de datos y comunicación clara de hallazgos."
+    },
+    {
+        minScore: 21,
+        maxScore: 30,
+        message: "Nivel Básico: Entiendes lo básico de los informes pero necesitas más práctica con organización, análisis de datos y adaptación de contenido para diferentes audiencias."
+    },
+    {
+        minScore: 31,
+        maxScore: 35,
+        message: "Nivel Intermedio: Tienes buenas habilidades de redacción de informes. Continúa desarrollando tu capacidad para interpretar datos complejos y hacer recomendaciones estratégicas."
+    },
+    {
+        minScore: 36,
+        maxScore: 40,
+        message: "Nivel Avanzado: Tienes excelentes habilidades de redacción de informes. Tus informes están bien estructurados, contienen análisis de datos significativos y ofrecen perspectivas accionables."
+    }
+];
+
 // 전역 변수
 let currentQuestionIndex = 0;
 let answers = [];
@@ -132,13 +368,51 @@ const resultMessageElement = document.getElementById('result-message');
 const restartBtn = document.getElementById('restart-btn');
 const backToMainBtn = document.getElementById('back-to-main-btn');
 
-// 초기화
+// 현재 사용 중인 질문과 결과 메시지
+let questions = questionsKO;
+let resultMessages = resultMessagesKO;
+
+// 언어 변경 함수
+function updateSurveyLanguage(lang) {
+    if (lang === 'ko') {
+        questions = questionsKO;
+        resultMessages = resultMessagesKO;
+    } else if (lang === 'en') {
+        questions = questionsEN;
+        resultMessages = resultMessagesEN;
+    } else if (lang === 'es') {
+        questions = questionsES;
+        resultMessages = resultMessagesES;
+    }
+    
+    // 현재 화면 업데이트
+    if (surveyContainer.style.display !== 'none') {
+        showQuestion(currentQuestionIndex);
+    } else if (resultContainer.style.display !== 'none') {
+        showResult();
+    }
+}
+
+// 초기화 함수 수정
 function init() {
     currentQuestionIndex = 0;
     answers = new Array(questions.length).fill(null);
     showQuestion(currentQuestionIndex);
     surveyContainer.style.display = 'block';
     resultContainer.style.display = 'none';
+    
+    // URL에서 언어 파라미터 확인 및 적용
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang');
+    if (lang) {
+        updateSurveyLanguage(lang);
+    } else {
+        // 저장된 언어 설정 불러오기
+        const savedLanguage = localStorage.getItem('selectedLanguage');
+        if (savedLanguage) {
+            updateSurveyLanguage(savedLanguage);
+        }
+    }
 }
 
 // 질문 표시
@@ -434,5 +708,20 @@ submitBtn.addEventListener('click', showResult);
 restartBtn.addEventListener('click', init);
 backToMainBtn.addEventListener('click', goToMainPage);
 
-// 페이지 로드 시 초기화
-init(); 
+// 페이지 로드 시 초기화 수정
+document.addEventListener('DOMContentLoaded', function() {
+    init();
+    
+    // 이벤트 리스너 등록
+    prevBtn.addEventListener('click', goToPreviousQuestion);
+    nextBtn.addEventListener('click', goToNextQuestion);
+    submitBtn.addEventListener('click', showResult);
+    restartBtn.addEventListener('click', init);
+    backToMainBtn.addEventListener('click', goToMainPage);
+    
+    // 저장된 언어 설정 불러오기
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+        updateSurveyLanguage(savedLanguage);
+    }
+}); 
